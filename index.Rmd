@@ -1,9 +1,9 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAME HERE"
+title: "SLAT7829 Text and Corpus Analysis"
+author: "Martin Schweinberger"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
 
-# Down the rabbit-hole
+# SLAT7829 Text and Corpus Analysis
 
