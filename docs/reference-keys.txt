@@ -1,3 +1,7 @@
 slat7829-text-and-corpus-analysis
 the-pool-of-tears
 a-caucus-race-and-a-long-tale
+introduction
+concordancing
+what-is-text-and-corpus-analysis
+basic-concepts-in-text-and-corpus-analysis
