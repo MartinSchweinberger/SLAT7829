@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | SLAT7829 Text and Corpus Analysis</title>
-  <meta name="description" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <title>Network Statistics | SLAT7829 Text and Corpus Analysis</title>
+  <meta name="description" content="Network Statistics | SLAT7829 Text and Corpus Analysis" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <meta property="og:title" content="Network Statistics | SLAT7829 Text and Corpus Analysis" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <meta name="twitter:title" content="Network Statistics | SLAT7829 Text and Corpus Analysis" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-05-10" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="network-visualization.html"/>
+<link rel="next" href="citation-session-info.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,9 +52,77 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -222,28 +290,32 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#covarying-collexeme-analysis"><i class="fa fa-check"></i>Covarying Collexeme Analysis</a></li>
 <li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#distinctive-collexeme-analysis"><i class="fa fa-check"></i>Distinctive Collexeme Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a>
+<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a></li>
+<li class="chapter" data-level="" data-path="what-is-text-analysis-1.html"><a href="what-is-text-analysis-1.html"><i class="fa fa-check"></i>What is Text Analysis?</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i>Data preparation</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="network-analysis.html"><a href="network-analysis.html#what-is-network-analysis"><i class="fa fa-check"></i><b>10.1</b> What is Network Analysis?</a></li>
-<li class="chapter" data-level="10.2" data-path="network-analysis.html"><a href="network-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i><b>10.2</b> Preparation and session set up</a></li>
-<li class="chapter" data-level="10.3" data-path="network-analysis.html"><a href="network-analysis.html#data-preparation"><i class="fa fa-check"></i><b>10.3</b> Data preparation</a></li>
-<li class="chapter" data-level="10.4" data-path="network-analysis.html"><a href="network-analysis.html#creating-a-matrix"><i class="fa fa-check"></i><b>10.4</b> Creating a matrix</a></li>
-<li class="chapter" data-level="10.5" data-path="network-analysis.html"><a href="network-analysis.html#network-visualization"><i class="fa fa-check"></i><b>10.5</b> Network Visualization</a></li>
-<li class="chapter" data-level="10.6" data-path="network-analysis.html"><a href="network-analysis.html#tidy-networks"><i class="fa fa-check"></i><b>10.6</b> Tidy Networks</a></li>
-<li class="chapter" data-level="10.7" data-path="network-analysis.html"><a href="network-analysis.html#quanteda-networks"><i class="fa fa-check"></i><b>10.7</b> Quanteda Networks</a></li>
-<li class="chapter" data-level="10.8" data-path="network-analysis.html"><a href="network-analysis.html#network-statistics"><i class="fa fa-check"></i><b>10.8</b> Network Statistics</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#creating-a-matrix"><i class="fa fa-check"></i>Creating a matrix</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i>Network Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#tidy-networks"><i class="fa fa-check"></i>Tidy Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#quanteda-networks"><i class="fa fa-check"></i>Quanteda Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#igraph-networks"><i class="fa fa-check"></i>iGraph Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="network-statistics.html"><a href="network-statistics.html"><i class="fa fa-check"></i>Network Statistics</a></li>
+<li class="chapter" data-level="" data-path="citation-session-info.html"><a href="citation-session-info.html"><i class="fa fa-check"></i>Citation &amp; Session Info</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="11" data-path="pos-tagging-and-syntactic-parsing.html"><a href="pos-tagging-and-syntactic-parsing.html"><i class="fa fa-check"></i><b>11</b> POS-Tagging and Syntactic Parsing</a></li>
 <li class="chapter" data-level="12" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html"><i class="fa fa-check"></i><b>12</b> Sentiment Analysis</a>
 <ul>
-<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i>Preparation and session set up</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#binning"><i class="fa fa-check"></i>Binning</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#moving-average"><i class="fa fa-check"></i>Moving average</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="topic-modeling.html"><a href="topic-modeling.html"><i class="fa fa-check"></i><b>13</b> Topic Modeling</a>
 <ul>
-<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-2"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#model-calculation"><i class="fa fa-check"></i>Model calculation</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#visualization-of-words-and-topics"><i class="fa fa-check"></i>Visualization of Words and Topics</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-distributions"><i class="fa fa-check"></i>Topic distributions</a></li>
@@ -274,19 +346,121 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="network-statistics" class="section level1 unnumbered hasAnchor">
+<h1>Network Statistics<a href="network-statistics.html#network-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In addition to visualizing networks, we will analyze the network and extract certain statistics about the network that tell us about structural properties of networks. In the present case, we will extract</p>
+<p>To extract the statistics, we use the edge object generated above (called <code>ed</code>) and remove all rows that contain missing values (<code>NA</code>) and then repeat each combination as often as it occurred based on the value in the <code>Frequency</code> column.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="network-statistics.html#cb21-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">&lt;-</span> ed <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="network-statistics.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
+<span id="cb21-3"><a href="network-statistics.html#cb21-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">&lt;-</span> dg[<span class="fu">rep</span>(<span class="fu">seq_along</span>(dg<span class="sc">$</span>Frequency), dg<span class="sc">$</span>Frequency), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb21-4"><a href="network-statistics.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dg) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>The resulting object (<code>dg</code>) looks as shown below.</p>
+<template id="493c3afc-5f74-464b-82a2-f0349fb1c565"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-e9a1131e{table-layout:auto;width:95%;}.cl-e9958166{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e9958170{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e9959ad4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e995d332{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d33c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d346{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d347{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d350{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d35a{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d35b{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e995d364{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-e9a1131e'>
+<caption class="Table Caption">
+<p><span id="tab:nstat1b">Table 10.5: </span>First 15 rows of dg data.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-e995d35b"><p class="cl-e9959ad4"><span class="cl-e9958166">from</span></p></td><td class="cl-e995d364"><p class="cl-e9959ad4"><span class="cl-e9958166">to</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">CAPULET</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">FRIAR LAWRENCE</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">JULIET</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">LADY CAPULET</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">MONTAGUE</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">PARIS</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">PRINCE</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">ROMEO</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">ROMEO</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">CAPULET</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">CAPULET</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">CAPULET</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d332"><p class="cl-e9959ad4"><span class="cl-e9958170">FIRST CITIZEN</span></p></td><td class="cl-e995d33c"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d346"><p class="cl-e9959ad4"><span class="cl-e9958170">FIRST CITIZEN</span></p></td><td class="cl-e995d347"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e995d350"><p class="cl-e9959ad4"><span class="cl-e9958170">FIRST SERVANT</span></p></td><td class="cl-e995d35a"><p class="cl-e9959ad4"><span class="cl-e9958170">BENVOLIO</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="4070d3d6-2f95-4c67-91e7-8c04ce224a65"></div>
+<script>
+var dest = document.getElementById("4070d3d6-2f95-4c67-91e7-8c04ce224a65");
+var template = document.getElementById("493c3afc-5f74-464b-82a2-f0349fb1c565");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>We now generate an edge list from the <code>dg</code> object and then extract the <em>degree centrality</em> of all edges in the <code>dg</code> object by using the <code>degree</code> function from the <code>igraph</code> package. The <em>degree centrality</em> reflects the counts of how many edges each node has. The most central node is the one with with the highest value of ties.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="network-statistics.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dgg <span class="ot">&lt;-</span> <span class="fu">graph.edgelist</span>(<span class="fu">as.matrix</span>(dg), <span class="at">directed =</span> T)</span>
+<span id="cb22-2"><a href="network-statistics.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract degree centrality</span></span>
+<span id="cb22-3"><a href="network-statistics.html#cb22-3" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">degree</span>(dgg) </span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##             92             18             40             72             90 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##             44             42             44            108             68 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##             28             24             30             76             18 
+## SECOND SERVANT        SERVANT         TYBALT 
+##             32             30             44</code></pre>
+<p>To extract the most central node, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="network-statistics.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;ROMEO&quot;</code></pre>
+<p>We now extract the <em>betweenness centrality</em> of all edges in the <code>dg</code> object by using the <code>betweenness</code> function from the <code>igraph</code> package. <em>Betweenness centrality</em> reflects how connected nodes are. More precisely, it provides a measure of how important noes are for information flow between nodes in a network. The node with the highest betweenness centrality creates the shortest paths in the network. For any two nodes we can find the shortest path, i.e. the path with the lowest number of steps that are necessary to get from the node A to node B. If a node C facilitates the shortest path between A and B, then it means C is important to the efficient flow of information between A and B.</p>
+<p>Thus, betweenness effectively counts how many shortest paths each node is on. The higher a node?s betweenness, the more important they are for the efficient flow of goods in a network.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="network-statistics.html#cb26-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg)</span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##       15.62322        0.00000        1.09118        5.55471       16.27686 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##        2.18220        1.85943        2.18220       27.62437        9.61512 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##        0.03846        0.00000        0.84421        7.40145        0.26842 
+## SECOND SERVANT        SERVANT         TYBALT 
+##        0.00000        0.23874        3.19941</code></pre>
+<p>To extract the most central node, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="network-statistics.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;ROMEO&quot;</code></pre>
+<p>In addition, we extract the closeness statistic of all edges in the <code>dg</code> object by using the <code>closeness</code> function from the <code>igraph</code> package. Closeness centrality refers to the shortest paths between nodes. The distance between two nodes represents the length of the shortest path between them. The closeness of a node is the average distance from that node to all other nodes.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="network-statistics.html#cb30-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg)</span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##        0.05556        0.03846        0.04167        0.05000        0.05882 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##        0.04545        0.04545        0.04545        0.05882        0.05263 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##        0.03846        0.04000        0.04000        0.04762        0.03846 
+## SECOND SERVANT        SERVANT         TYBALT 
+##        0.04000        0.04167        0.04762</code></pre>
+<p>To extract the node with the highest closeness, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="network-statistics.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;LADY CAPULET&quot; &quot;ROMEO&quot;</code></pre>
+<p>We have reached the end of this tutorial and you now know how to create and modify networks in R and how you can highlight aspects of your data.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="network-visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="citation-session-info.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -317,7 +491,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/%s",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/10-network.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -325,7 +499,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/%s",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/10-network.Rmd",
 "text": null
 },
 "download": null,

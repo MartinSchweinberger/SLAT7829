@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Data preparation | SLAT7829 Text and Corpus Analysis</title>
+  <meta name="description" content="Data preparation | SLAT7829 Text and Corpus Analysis" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Data preparation | SLAT7829 Text and Corpus Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Data preparation | SLAT7829 Text and Corpus Analysis" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="what-is-text-analysis-1.html"/>
+<link rel="next" href="network-visualization.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7829</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html"><i class="fa fa-check"></i><b>1</b> Text and Corpus Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#what-is-text-analysis"><i class="fa fa-check"></i><b>1.1</b> What is Text Analysis?</a></li>
+<li class="chapter" data-level="1.2" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#text-analysis-at-uq"><i class="fa fa-check"></i><b>1.2</b> Text Analysis at UQ</a></li>
+<li class="chapter" data-level="1.3" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#a-few-words-about-tools-and-scripts"><i class="fa fa-check"></i><b>1.3</b> A few words about Tools and Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-text-and-corpus-analysis.html"><a href="basic-concepts-in-text-and-corpus-analysis.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Text and Corpus Analysis</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-antconc.html"><a href="introduction-to-antconc.html"><i class="fa fa-check"></i><b>3</b> Introduction to AntConc</a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-antconc-1.html"><a href="introduction-to-antconc-1.html"><i class="fa fa-check"></i><b>4</b> Introduction to AntConc</a></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>5.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#audience"><i class="fa fa-check"></i><b>5.2</b> Audience</a></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>5.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>5.4</b> Preparation</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>5.5</b> Folder Structure and R projects</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>5.5.1</b> Create a folder for your project</a></li>
+<li class="chapter" data-level="5.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>5.5.2</b> Open RStudio</a></li>
+<li class="chapter" data-level="5.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>5.5.3</b> R Projects</a></li>
+<li class="chapter" data-level="5.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>5.5.4</b> R Notebooks</a></li>
+<li class="chapter" data-level="5.5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>5.5.5</b> Updating R</a></li>
+<li class="chapter" data-level="5.5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>5.5.6</b> Optimizing R project options</a></li>
+<li class="chapter" data-level="5.5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>5.5.7</b> Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="5.5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>5.5.8</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>5.6</b> R and RStudio Basics</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>5.7</b> RStudio: Panes</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>5.7.1</b> R Console (bottom left pane)</a></li>
+<li class="chapter" data-level="5.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>5.7.2</b> Running commands from a script</a></li>
+<li class="chapter" data-level="5.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>5.7.3</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>5.8</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>5.8.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="5.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>5.8.2</b> Packages</a></li>
+<li class="chapter" data-level="5.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>5.8.3</b> Getting help</a></li>
+<li class="chapter" data-level="5.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-within-r"><i class="fa fa-check"></i><b>5.8.4</b> Finding help within R</a></li>
+<li class="chapter" data-level="5.8.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-online"><i class="fa fa-check"></i><b>5.8.5</b> Finding help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>6</b> Working with Tables in R and RStudio</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>6.1</b> Working with tables</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>6.2</b> Loading data from the web</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>6.3</b> Functions and Objects</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>6.4</b> Inspecting data</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>6.5</b> Accessing individual cells in a table</a></li>
+<li class="chapter" data-level="6.6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#tabulating-data"><i class="fa fa-check"></i><b>6.6</b> Tabulating data</a></li>
+<li class="chapter" data-level="6.7" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>6.7</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="6.8" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>6.8</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="6.9" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-excel-data"><i class="fa fa-check"></i><b>6.9</b> Loading Excel data</a></li>
+<li class="chapter" data-level="6.10" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>6.10</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="6.11" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ordering-data"><i class="fa fa-check"></i><b>6.11</b> Ordering data</a></li>
+<li class="chapter" data-level="6.12" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>6.12</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="6.13" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#if-statements"><i class="fa fa-check"></i><b>6.13</b> If-statements</a></li>
+<li class="chapter" data-level="6.14" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#summarizing-data"><i class="fa fa-check"></i><b>6.14</b> Summarizing data</a></li>
+<li class="chapter" data-level="6.15" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>6.15</b> Gathering and spreading data</a></li>
+<li class="chapter" data-level="6.16" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ending-r-sessions"><i class="fa fa-check"></i><b>6.16</b> Ending R sessions</a></li>
+<li class="chapter" data-level="6.17" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information"><i class="fa fa-check"></i><b>6.17</b> Extracting session information</a></li>
+<li class="chapter" data-level="6.18" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#going-further"><i class="fa fa-check"></i><b>6.18</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html"><i class="fa fa-check"></i><b>7</b> Concordancing with R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#loading-and-processing-textual-data"><i class="fa fa-check"></i><b>7.1</b> Loading and processing textual data</a></li>
+<li class="chapter" data-level="7.2" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#creating-simple-concordances"><i class="fa fa-check"></i><b>7.2</b> Creating simple concordances</a></li>
+<li class="chapter" data-level="7.3" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#extracting-more-than-single-words"><i class="fa fa-check"></i><b>7.3</b> Extracting more than single words</a></li>
+<li class="chapter" data-level="7.4" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#searches-using-regular-expressions"><i class="fa fa-check"></i><b>7.4</b> Searches using regular expressions</a></li>
+<li class="chapter" data-level="7.5" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#piping-concordances"><i class="fa fa-check"></i><b>7.5</b> Piping concordances</a></li>
+<li class="chapter" data-level="7.6" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#arranging-concordances-and-adding-frequency-information"><i class="fa fa-check"></i><b>7.6</b> Arranging concordances and adding frequency information</a></li>
+<li class="chapter" data-level="7.7" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#ordering-by-subsequent-elements"><i class="fa fa-check"></i><b>7.7</b> Ordering by subsequent elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html"><i class="fa fa-check"></i><b>8</b> Text Analysis and Distant Reading using R</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#wordclouds"><i class="fa fa-check"></i>Wordclouds</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#frequency-changes"><i class="fa fa-check"></i>Frequency changes</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#dispersion-plots"><i class="fa fa-check"></i>Dispersion plots</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#over--and-underuse"><i class="fa fa-check"></i>Over- and underuse</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#finding-collocations"><i class="fa fa-check"></i>Finding collocations</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#visualizing-collocation-networks"><i class="fa fa-check"></i>Visualizing Collocation Networks</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#keyness"><i class="fa fa-check"></i>Keyness</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#ner-using-pacman"><i class="fa fa-check"></i>NER using pacman</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#ner-using-nlp-and-opennlp"><i class="fa fa-check"></i>NER using NLP and openNLP</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html"><i class="fa fa-check"></i><b>9</b> Analyzing Co-Occurrences and Collocations</a>
+<ul>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#extracting-n-grams-with-quanteda"><i class="fa fa-check"></i>Extracting N-Grams with quanteda</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#association-strength"><i class="fa fa-check"></i>Association Strength</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#dendrograms"><i class="fa fa-check"></i>Dendrograms</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#network-graphs"><i class="fa fa-check"></i>Network Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#basic-network-graphs"><i class="fa fa-check"></i>Basic Network Graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#biplots"><i class="fa fa-check"></i>Biplots</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#simple-collexeme-analysis"><i class="fa fa-check"></i>Simple Collexeme Analysis</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#covarying-collexeme-analysis"><i class="fa fa-check"></i>Covarying Collexeme Analysis</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#distinctive-collexeme-analysis"><i class="fa fa-check"></i>Distinctive Collexeme Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a></li>
+<li class="chapter" data-level="" data-path="what-is-text-analysis-1.html"><a href="what-is-text-analysis-1.html"><i class="fa fa-check"></i>What is Text Analysis?</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i>Data preparation</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#creating-a-matrix"><i class="fa fa-check"></i>Creating a matrix</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i>Network Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#tidy-networks"><i class="fa fa-check"></i>Tidy Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#quanteda-networks"><i class="fa fa-check"></i>Quanteda Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#igraph-networks"><i class="fa fa-check"></i>iGraph Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="network-statistics.html"><a href="network-statistics.html"><i class="fa fa-check"></i>Network Statistics</a></li>
+<li class="chapter" data-level="" data-path="citation-session-info.html"><a href="citation-session-info.html"><i class="fa fa-check"></i>Citation &amp; Session Info</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="11" data-path="pos-tagging-and-syntactic-parsing.html"><a href="pos-tagging-and-syntactic-parsing.html"><i class="fa fa-check"></i><b>11</b> POS-Tagging and Syntactic Parsing</a></li>
+<li class="chapter" data-level="12" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html"><i class="fa fa-check"></i><b>12</b> Sentiment Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#binning"><i class="fa fa-check"></i>Binning</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#moving-average"><i class="fa fa-check"></i>Moving average</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="topic-modeling.html"><a href="topic-modeling.html"><i class="fa fa-check"></i><b>13</b> Topic Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#model-calculation"><i class="fa fa-check"></i>Model calculation</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#visualization-of-words-and-topics"><i class="fa fa-check"></i>Visualization of Words and Topics</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-distributions"><i class="fa fa-check"></i>Topic distributions</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-ranking"><i class="fa fa-check"></i>Topic ranking</a>
+<ul>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#approach-1"><i class="fa fa-check"></i>Approach 1</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#approach-2"><i class="fa fa-check"></i>Approach 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#filtering-documents"><i class="fa fa-check"></i>Filtering documents</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-proportions-over-time"><i class="fa fa-check"></i>Topic proportions over time</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7829 Text and Corpus Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-preparation" class="section level1 unnumbered hasAnchor">
+<h1>Data preparation<a href="data-preparation.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section shows how to create a network visualization with the <code>network</code> and the <code>GGally</code> packages. The network we will generate shows how often characters in William Shakespeare’s <em>Romeo and Juliet</em> occurred in the same scene. The issue we want to investigate here relates to networks of personas in Shakespeare’s <em>Romeo and Juliet</em> and we thus load this famous work of fiction.</p>
+<div id="creating-a-matrix" class="section level2 unnumbered hasAnchor">
+<h2>Creating a matrix<a href="data-preparation.html#creating-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we have loaded the data, we need to split the data into scenes. Scenes during which personas leave or enter will have to be split too so that we arrive at a table that contains the personas that are present during a sub-scene.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-preparation.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb3-2"><a href="data-preparation.html#cb3-2" aria-hidden="true" tabindex="-1"></a>rom <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;https://slcladal.github.io/data/romeo_tidy.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)</span></code></pre></div>
+<template id="e56a44e6-0838-4af9-8bf5-364d51c1c022"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-e22c667e{table-layout:auto;width:95%;}.cl-e220c77e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e220c850{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e220f8de{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e220f8e8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e2214eba{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ec4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ec5{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ece{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ecf{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ed8{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ed9{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214eda{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ee2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ee3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ee4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214eec{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214eed{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ef6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ef7{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e2214ef8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-e22c667e'>
+<caption class="Table Caption">
+<p><span id="tab:na1b">Table 10.1: </span>First 15 rows of rom data.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-e2214eed"><p class="cl-e220f8de"><span class="cl-e220c77e">actscene</span></p></td><td class="cl-e2214ef6"><p class="cl-e220f8de"><span class="cl-e220c77e">person</span></p></td><td class="cl-e2214ef8"><p class="cl-e220f8e8"><span class="cl-e220c77e">contrib</span></p></td><td class="cl-e2214ef7"><p class="cl-e220f8e8"><span class="cl-e220c77e">occurrences</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">BENVOLIO</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">24</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">CAPULET</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">2</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">FIRST CITIZEN</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">1</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">LADY CAPULET</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">1</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">10</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">MONTAGUE</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">6</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">PRINCE</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">1</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">ROMEO</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">16</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE I</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">TYBALT</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">2</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE II</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">BENVOLIO</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">5</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">7</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE II</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">CAPULET</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">3</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE II</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">PARIS</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">2</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">5</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE II</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">ROMEO</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">11</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ece"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE II</span></p></td><td class="cl-e2214eba"><p class="cl-e220f8de"><span class="cl-e220c850">SERVANT</span></p></td><td class="cl-e2214ec4"><p class="cl-e220f8e8"><span class="cl-e220c850">8</span></p></td><td class="cl-e2214ec5"><p class="cl-e220f8e8"><span class="cl-e220c850">3</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ed8"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE III</span></p></td><td class="cl-e2214ed9"><p class="cl-e220f8de"><span class="cl-e220c850">JULIET</span></p></td><td class="cl-e2214ecf"><p class="cl-e220f8e8"><span class="cl-e220c850">5</span></p></td><td class="cl-e2214eda"><p class="cl-e220f8e8"><span class="cl-e220c850">11</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e2214ee4"><p class="cl-e220f8de"><span class="cl-e220c850">ACT I_SCENE III</span></p></td><td class="cl-e2214eec"><p class="cl-e220f8de"><span class="cl-e220c850">LADY CAPULET</span></p></td><td class="cl-e2214ee3"><p class="cl-e220f8e8"><span class="cl-e220c850">11</span></p></td><td class="cl-e2214ee2"><p class="cl-e220f8e8"><span class="cl-e220c850">10</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="132aa076-1ca9-41ba-8c81-5066843a7d73"></div>
+<script>
+var dest = document.getElementById("132aa076-1ca9-41ba-8c81-5066843a7d73");
+var template = document.getElementById("e56a44e6-0838-4af9-8bf5-364d51c1c022");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>We now transform that table into a co-occurrence matrix.</p>
+<template id="46e23afc-e339-4a7f-81eb-95198db4408d"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-e253bf62{table-layout:auto;width:95%;}.cl-e249997e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e2499988{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-e249ce12{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e249ce26{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-e24a259c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25a6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25a7{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25b0{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25b1{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25b2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25ba{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25bb{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25bc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25c4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25c5{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-e24a25ce{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-e253bf62'>
+<caption class="Table Caption">
+<p><span id="tab:na2b">Table 10.2: </span>First 5 rows and 5 columns of the of romeoco-occurrence matrix.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-e24a25c5"><p class="cl-e249ce12"><span class="cl-e249997e">Persona</span></p></td><td class="cl-e24a25c4"><p class="cl-e249ce26"><span class="cl-e249997e">BALTHASAR</span></p></td><td class="cl-e24a25c4"><p class="cl-e249ce26"><span class="cl-e249997e">BENVOLIO</span></p></td><td class="cl-e24a25c4"><p class="cl-e249ce26"><span class="cl-e249997e">CAPULET</span></p></td><td class="cl-e24a25c4"><p class="cl-e249ce26"><span class="cl-e249997e">FIRST CITIZEN</span></p></td><td class="cl-e24a25ce"><p class="cl-e249ce26"><span class="cl-e249997e">FIRST SERVANT</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-e24a25a7"><p class="cl-e249ce12"><span class="cl-e2499988">BALTHASAR</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25a6"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e24a25b2"><p class="cl-e249ce12"><span class="cl-e2499988">BENVOLIO</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">3</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">2</span></p></td><td class="cl-e24a25b1"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e24a25a7"><p class="cl-e249ce12"><span class="cl-e2499988">CAPULET</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">3</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a259c"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td><td class="cl-e24a25a6"><p class="cl-e249ce26"><span class="cl-e2499988">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e24a25b2"><p class="cl-e249ce12"><span class="cl-e2499988">FIRST CITIZEN</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">2</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td><td class="cl-e24a25b0"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25b1"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-e24a25bc"><p class="cl-e249ce12"><span class="cl-e2499988">FIRST SERVANT</span></p></td><td class="cl-e24a25bb"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25bb"><p class="cl-e249ce26"><span class="cl-e2499988">1</span></p></td><td class="cl-e24a25bb"><p class="cl-e249ce26"><span class="cl-e2499988">2</span></p></td><td class="cl-e24a25bb"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td><td class="cl-e24a25ba"><p class="cl-e249ce26"><span class="cl-e2499988">0</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="7b9e0d12-d0e8-44d5-9f74-834b90aaf3ab"></div>
+<script>
+var dest = document.getElementById("7b9e0d12-d0e8-44d5-9f74-834b90aaf3ab");
+var template = document.getElementById("46e23afc-e339-4a7f-81eb-95198db4408d");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>The data shows how often a character has appeared with each other character in the play - only Friar Lawrence and Friar John were excluded because they only appear in one scene where they talk to each other.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="what-is-text-analysis-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="network-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/10-network.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/10-network.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

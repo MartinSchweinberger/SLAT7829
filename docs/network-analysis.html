@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Week 10 Network Analysis | SLAT7829 Text and Corpus Analysis</title>
+  <meta name="description" content="Week 10 Network Analysis | SLAT7829 Text and Corpus Analysis" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Week 10 Network Analysis | SLAT7829 Text and Corpus Analysis" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Week 10 Network Analysis | SLAT7829 Text and Corpus Analysis" />
+  
+  
+  
+
+<meta name="author" content="Martin Schweinberger" />
+
+
+<meta name="date" content="2022-05-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analyzing-co-occurrences-and-collocations.html"/>
+<link rel="next" href="pos-tagging-and-syntactic-parsing.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
+<link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SLAT7829</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#basic-course-information"><i class="fa fa-check"></i>Basic Course Information</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-description"><i class="fa fa-check"></i>Course Description</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-introduction"><i class="fa fa-check"></i>Course Introduction</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-staff"><i class="fa fa-check"></i>Course Staff</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#timetable"><i class="fa fa-check"></i>Timetable</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#aims-objectives-graduate-attributes"><i class="fa fa-check"></i>Aims, Objectives &amp; Graduate Attributes</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-aims"><i class="fa fa-check"></i>Course Aims</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i>Learning Objectives</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-resources"><i class="fa fa-check"></i>Learning Resources</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#required-resources"><i class="fa fa-check"></i>Required Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#recommended-resources"><i class="fa fa-check"></i>Recommended Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#university-learning-resources"><i class="fa fa-check"></i>University Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#school-of-languages-and-cultures-learning-resources"><i class="fa fa-check"></i>School of Languages and Cultures Learning Resources</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#other-learning-resources-information"><i class="fa fa-check"></i>Other Learning Resources &amp; Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#teaching-learning-activities"><i class="fa fa-check"></i>Teaching &amp; Learning Activities</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#learning-activities"><i class="fa fa-check"></i>Learning Activities</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#course-plan"><i class="fa fa-check"></i>Course plan</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html"><i class="fa fa-check"></i><b>1</b> Text and Corpus Analysis</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#what-is-text-analysis"><i class="fa fa-check"></i><b>1.1</b> What is Text Analysis?</a></li>
+<li class="chapter" data-level="1.2" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#text-analysis-at-uq"><i class="fa fa-check"></i><b>1.2</b> Text Analysis at UQ</a></li>
+<li class="chapter" data-level="1.3" data-path="text-and-corpus-analysis.html"><a href="text-and-corpus-analysis.html#a-few-words-about-tools-and-scripts"><i class="fa fa-check"></i><b>1.3</b> A few words about Tools and Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-concepts-in-text-and-corpus-analysis.html"><a href="basic-concepts-in-text-and-corpus-analysis.html"><i class="fa fa-check"></i><b>2</b> Basic Concepts in Text and Corpus Analysis</a></li>
+<li class="chapter" data-level="3" data-path="introduction-to-antconc.html"><a href="introduction-to-antconc.html"><i class="fa fa-check"></i><b>3</b> Introduction to AntConc</a></li>
+<li class="chapter" data-level="4" data-path="introduction-to-antconc-1.html"><a href="introduction-to-antconc-1.html"><i class="fa fa-check"></i><b>4</b> Introduction to AntConc</a></li>
+<li class="chapter" data-level="5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>5</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#goals-of-this-tutorial"><i class="fa fa-check"></i><b>5.1</b> Goals of this tutorial</a></li>
+<li class="chapter" data-level="5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#audience"><i class="fa fa-check"></i><b>5.2</b> Audience</a></li>
+<li class="chapter" data-level="5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#installing-r-and-rstudio"><i class="fa fa-check"></i><b>5.3</b> Installing R and RStudio</a></li>
+<li class="chapter" data-level="5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#preparation"><i class="fa fa-check"></i><b>5.4</b> Preparation</a></li>
+<li class="chapter" data-level="5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#folder-structure-and-r-projects"><i class="fa fa-check"></i><b>5.5</b> Folder Structure and R projects</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#create-a-folder-for-your-project"><i class="fa fa-check"></i><b>5.5.1</b> Create a folder for your project</a></li>
+<li class="chapter" data-level="5.5.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#open-rstudio"><i class="fa fa-check"></i><b>5.5.2</b> Open RStudio</a></li>
+<li class="chapter" data-level="5.5.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-projects"><i class="fa fa-check"></i><b>5.5.3</b> R Projects</a></li>
+<li class="chapter" data-level="5.5.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-notebooks"><i class="fa fa-check"></i><b>5.5.4</b> R Notebooks</a></li>
+<li class="chapter" data-level="5.5.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#updating-r"><i class="fa fa-check"></i><b>5.5.5</b> Updating R</a></li>
+<li class="chapter" data-level="5.5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#optimizing-r-project-options"><i class="fa fa-check"></i><b>5.5.6</b> Optimizing R project options</a></li>
+<li class="chapter" data-level="5.5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r-notebooks"><i class="fa fa-check"></i><b>5.5.7</b> Getting started with R Notebooks</a></li>
+<li class="chapter" data-level="5.5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-markdown"><i class="fa fa-check"></i><b>5.5.8</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-and-rstudio-basics"><i class="fa fa-check"></i><b>5.6</b> R and RStudio Basics</a></li>
+<li class="chapter" data-level="5.7" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#rstudio-panes"><i class="fa fa-check"></i><b>5.7</b> RStudio: Panes</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#r-console-bottom-left-pane"><i class="fa fa-check"></i><b>5.7.1</b> R Console (bottom left pane)</a></li>
+<li class="chapter" data-level="5.7.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#running-commands-from-a-script"><i class="fa fa-check"></i><b>5.7.2</b> Running commands from a script</a></li>
+<li class="chapter" data-level="5.7.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#script-editor-top-left-pane"><i class="fa fa-check"></i><b>5.7.3</b> Script Editor (top left pane)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-started-with-r"><i class="fa fa-check"></i><b>5.8</b> Getting started with R</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#setting-up-an-r-session"><i class="fa fa-check"></i><b>5.8.1</b> Setting up an R session</a></li>
+<li class="chapter" data-level="5.8.2" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#packages"><i class="fa fa-check"></i><b>5.8.2</b> Packages</a></li>
+<li class="chapter" data-level="5.8.3" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#getting-help"><i class="fa fa-check"></i><b>5.8.3</b> Getting help</a></li>
+<li class="chapter" data-level="5.8.4" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-within-r"><i class="fa fa-check"></i><b>5.8.4</b> Finding help within R</a></li>
+<li class="chapter" data-level="5.8.5" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html#finding-help-online"><i class="fa fa-check"></i><b>5.8.5</b> Finding help online</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html"><i class="fa fa-check"></i><b>6</b> Working with Tables in R and RStudio</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#working-with-tables"><i class="fa fa-check"></i><b>6.1</b> Working with tables</a></li>
+<li class="chapter" data-level="6.2" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-the-web"><i class="fa fa-check"></i><b>6.2</b> Loading data from the web</a></li>
+<li class="chapter" data-level="6.3" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#functions-and-objects"><i class="fa fa-check"></i><b>6.3</b> Functions and Objects</a></li>
+<li class="chapter" data-level="6.4" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#inspecting-data"><i class="fa fa-check"></i><b>6.4</b> Inspecting data</a></li>
+<li class="chapter" data-level="6.5" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#accessing-individual-cells-in-a-table"><i class="fa fa-check"></i><b>6.5</b> Accessing individual cells in a table</a></li>
+<li class="chapter" data-level="6.6" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#tabulating-data"><i class="fa fa-check"></i><b>6.6</b> Tabulating data</a></li>
+<li class="chapter" data-level="6.7" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#saving-data-to-your-computer"><i class="fa fa-check"></i><b>6.7</b> Saving data to your computer</a></li>
+<li class="chapter" data-level="6.8" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-data-from-your-computer"><i class="fa fa-check"></i><b>6.8</b> Loading data from your computer</a></li>
+<li class="chapter" data-level="6.9" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#loading-excel-data"><i class="fa fa-check"></i><b>6.9</b> Loading Excel data</a></li>
+<li class="chapter" data-level="6.10" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#renaming-piping-and-filtering"><i class="fa fa-check"></i><b>6.10</b> Renaming, Piping, and Filtering</a></li>
+<li class="chapter" data-level="6.11" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ordering-data"><i class="fa fa-check"></i><b>6.11</b> Ordering data</a></li>
+<li class="chapter" data-level="6.12" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#creating-and-changing-variables"><i class="fa fa-check"></i><b>6.12</b> Creating and changing variables</a></li>
+<li class="chapter" data-level="6.13" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#if-statements"><i class="fa fa-check"></i><b>6.13</b> If-statements</a></li>
+<li class="chapter" data-level="6.14" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#summarizing-data"><i class="fa fa-check"></i><b>6.14</b> Summarizing data</a></li>
+<li class="chapter" data-level="6.15" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#gathering-and-spreading-data"><i class="fa fa-check"></i><b>6.15</b> Gathering and spreading data</a></li>
+<li class="chapter" data-level="6.16" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#ending-r-sessions"><i class="fa fa-check"></i><b>6.16</b> Ending R sessions</a></li>
+<li class="chapter" data-level="6.17" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#extracting-session-information"><i class="fa fa-check"></i><b>6.17</b> Extracting session information</a></li>
+<li class="chapter" data-level="6.18" data-path="working-with-tables-in-r-and-rstudio.html"><a href="working-with-tables-in-r-and-rstudio.html#going-further"><i class="fa fa-check"></i><b>6.18</b> Going further</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html"><i class="fa fa-check"></i><b>7</b> Concordancing with R</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#loading-and-processing-textual-data"><i class="fa fa-check"></i><b>7.1</b> Loading and processing textual data</a></li>
+<li class="chapter" data-level="7.2" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#creating-simple-concordances"><i class="fa fa-check"></i><b>7.2</b> Creating simple concordances</a></li>
+<li class="chapter" data-level="7.3" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#extracting-more-than-single-words"><i class="fa fa-check"></i><b>7.3</b> Extracting more than single words</a></li>
+<li class="chapter" data-level="7.4" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#searches-using-regular-expressions"><i class="fa fa-check"></i><b>7.4</b> Searches using regular expressions</a></li>
+<li class="chapter" data-level="7.5" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#piping-concordances"><i class="fa fa-check"></i><b>7.5</b> Piping concordances</a></li>
+<li class="chapter" data-level="7.6" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#arranging-concordances-and-adding-frequency-information"><i class="fa fa-check"></i><b>7.6</b> Arranging concordances and adding frequency information</a></li>
+<li class="chapter" data-level="7.7" data-path="concordancing-with-r.html"><a href="concordancing-with-r.html#ordering-by-subsequent-elements"><i class="fa fa-check"></i><b>7.7</b> Ordering by subsequent elements</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html"><i class="fa fa-check"></i><b>8</b> Text Analysis and Distant Reading using R</a>
+<ul>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#wordclouds"><i class="fa fa-check"></i>Wordclouds</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#frequency-changes"><i class="fa fa-check"></i>Frequency changes</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#dispersion-plots"><i class="fa fa-check"></i>Dispersion plots</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#over--and-underuse"><i class="fa fa-check"></i>Over- and underuse</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#finding-collocations"><i class="fa fa-check"></i>Finding collocations</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#visualizing-collocation-networks"><i class="fa fa-check"></i>Visualizing Collocation Networks</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#keyness"><i class="fa fa-check"></i>Keyness</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#ner-using-pacman"><i class="fa fa-check"></i>NER using pacman</a></li>
+<li class="chapter" data-level="" data-path="text-analysis-and-distant-reading-using-r.html"><a href="text-analysis-and-distant-reading-using-r.html#ner-using-nlp-and-opennlp"><i class="fa fa-check"></i>NER using NLP and openNLP</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html"><i class="fa fa-check"></i><b>9</b> Analyzing Co-Occurrences and Collocations</a>
+<ul>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#extracting-n-grams-with-quanteda"><i class="fa fa-check"></i>Extracting N-Grams with quanteda</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#association-strength"><i class="fa fa-check"></i>Association Strength</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#dendrograms"><i class="fa fa-check"></i>Dendrograms</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#network-graphs"><i class="fa fa-check"></i>Network Graphs</a>
+<ul>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#basic-network-graphs"><i class="fa fa-check"></i>Basic Network Graphs</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#biplots"><i class="fa fa-check"></i>Biplots</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#simple-collexeme-analysis"><i class="fa fa-check"></i>Simple Collexeme Analysis</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#covarying-collexeme-analysis"><i class="fa fa-check"></i>Covarying Collexeme Analysis</a></li>
+<li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#distinctive-collexeme-analysis"><i class="fa fa-check"></i>Distinctive Collexeme Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="network-analysis.html"><a href="network-analysis.html#what-is-network-analysis"><i class="fa fa-check"></i><b>10.1</b> What is Network Analysis?</a></li>
+<li class="chapter" data-level="10.2" data-path="network-analysis.html"><a href="network-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i><b>10.2</b> Preparation and session set up</a></li>
+<li class="chapter" data-level="10.3" data-path="network-analysis.html"><a href="network-analysis.html#data-preparation"><i class="fa fa-check"></i><b>10.3</b> Data preparation</a></li>
+<li class="chapter" data-level="10.4" data-path="network-analysis.html"><a href="network-analysis.html#creating-a-matrix"><i class="fa fa-check"></i><b>10.4</b> Creating a matrix</a></li>
+<li class="chapter" data-level="10.5" data-path="network-analysis.html"><a href="network-analysis.html#network-visualization"><i class="fa fa-check"></i><b>10.5</b> Network Visualization</a></li>
+<li class="chapter" data-level="10.6" data-path="network-analysis.html"><a href="network-analysis.html#tidy-networks"><i class="fa fa-check"></i><b>10.6</b> Tidy Networks</a></li>
+<li class="chapter" data-level="10.7" data-path="network-analysis.html"><a href="network-analysis.html#quanteda-networks"><i class="fa fa-check"></i><b>10.7</b> Quanteda Networks</a></li>
+<li class="chapter" data-level="10.8" data-path="network-analysis.html"><a href="network-analysis.html#igraph-networks"><i class="fa fa-check"></i><b>10.8</b> iGraph Networks</a></li>
+<li class="chapter" data-level="10.9" data-path="network-analysis.html"><a href="network-analysis.html#network-statistics"><i class="fa fa-check"></i><b>10.9</b> Network Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="pos-tagging-and-syntactic-parsing.html"><a href="pos-tagging-and-syntactic-parsing.html"><i class="fa fa-check"></i><b>11</b> POS-Tagging and Syntactic Parsing</a></li>
+<li class="chapter" data-level="12" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html"><i class="fa fa-check"></i><b>12</b> Sentiment Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#binning"><i class="fa fa-check"></i>Binning</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#moving-average"><i class="fa fa-check"></i>Moving average</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="topic-modeling.html"><a href="topic-modeling.html"><i class="fa fa-check"></i><b>13</b> Topic Modeling</a>
+<ul>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-2"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#model-calculation"><i class="fa fa-check"></i>Model calculation</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#visualization-of-words-and-topics"><i class="fa fa-check"></i>Visualization of Words and Topics</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-distributions"><i class="fa fa-check"></i>Topic distributions</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-ranking"><i class="fa fa-check"></i>Topic ranking</a>
+<ul>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#approach-1"><i class="fa fa-check"></i>Approach 1</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#approach-2"><i class="fa fa-check"></i>Approach 2</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#filtering-documents"><i class="fa fa-check"></i>Filtering documents</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-proportions-over-time"><i class="fa fa-check"></i>Topic proportions over time</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">SLAT7829 Text and Corpus Analysis</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="network-analysis" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Week 10</span> Network Analysis<a href="network-analysis.html#network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This tutorial introduces network analysis. Network analysis is a method for visualization that can be used to represent various types of data. This tutorial showcases how to perform network analysis based on textual data and how to visualize network graphs using R. The aim to show and exemplify selected useful methods associated with network analysis.</p>
+<p>In addition to being a visualization technique, networks have certain statistical properties that can be compared which makes network analysis a very useful procedure. To this end, this tutorial shows how to create and modify network graphs.</p>
+<div class="warning" style="padding:0.1em; background-color:#f2f2f2; color:#51247a">
+<span>
+<p style="margin-top:1em; text-align:center">
+<strong>How can you display the relationship between different elements, be they authors, characters, or words?</strong>
+</p>
+<p style="margin-left:1em;">
+</p>
+<p></span></p>
+</div>
+<p><br></p>
+<p>This tutorial builds on <a href="https://corpling.hypotheses.org/3341">a tutorial on plotting collocation networks</a> by <a href="http://www2.univ-paris8.fr/desagulier/home/">Guillaume Desagulier</a>, a tutorial on network analysis by offered by Alice Miller from the <a href="https://www.qut.edu.au/institute-for-future-environments/facilities/digital-observatory/about-do">Digital Observatory</a> at the <a href="https://www.qut.edu.au/">Queensland University of Technology</a>, and <a href="https://tm4ss.github.io/docs/Tutorial_5_Co-occurrence.html">this tutorial</a> by <a href="http://asv.informatik.uni-leipzig.de/staff/Andreas_Niekler">Andreas Niekler</a> and <a href="https://www.hans-bredow-institut.de/en/staff/gregor-wiedemann">Gregor Wiedemann</a>.</p>
+<div id="what-is-network-analysis" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> What is Network Analysis?<a href="network-analysis.html#what-is-network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The most common way to visualize relationships between entities are networks <span class="citation">(<a href="#ref-silge2017text" role="doc-biblioref">Silge and Robinson 2017, 131–37</a>)</span>. Networks, also called graphs, consist of <strong>nodes</strong> (typically represented as dots) and <strong>edges</strong> (typically represented as lines) and they can be directed or undirected networks.</p>
+<p>In directed networks, the direction of edges is captured. For instance, the exports of countries. In such cases the lines are directed and typically have arrows to indicate direction. The thickness of lines can also be utilized to encode information such as frequency of contact.</p>
+<p>The example that we will be concerned with focuses on the first type of data as it is by far the most common way in which relationships are coded.To show how to create a network, we will have a look at the network that the characters in William Shakespeare’s <em>Romeo and Juliet</em> form.</p>
+</div>
+<div id="preparation-and-session-set-up" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Preparation and session set up<a href="network-analysis.html#preparation-and-session-set-up" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this tutorials, we need to install certain <em>packages</em> from an R <em>library</em> so that the scripts shown below are executed without errors. Therefore, before turning to the code below, please install the packages by running the code below this paragraph - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="network-analysis.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages</span></span>
+<span id="cb1-2"><a href="network-analysis.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb1-3"><a href="network-analysis.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span>
+<span id="cb1-4"><a href="network-analysis.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggraph&quot;</span>)</span>
+<span id="cb1-5"><a href="network-analysis.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gutenbergr&quot;</span>)</span>
+<span id="cb1-6"><a href="network-analysis.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb1-7"><a href="network-analysis.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Matrix&quot;</span>)</span>
+<span id="cb1-8"><a href="network-analysis.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;network&quot;</span>)</span>
+<span id="cb1-9"><a href="network-analysis.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb1-10"><a href="network-analysis.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sna&quot;</span>)</span>
+<span id="cb1-11"><a href="network-analysis.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidygraph&quot;</span>)</span>
+<span id="cb1-12"><a href="network-analysis.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb1-13"><a href="network-analysis.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
+<span id="cb1-14"><a href="network-analysis.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1-15"><a href="network-analysis.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda.textplots&quot;</span>)</span>
+<span id="cb1-16"><a href="network-analysis.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb1-17"><a href="network-analysis.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-18"><a href="network-analysis.html#cb1-18" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<p>Next, we load the packages.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="network-analysis.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># activate packages</span></span>
+<span id="cb2-2"><a href="network-analysis.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-3"><a href="network-analysis.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb2-4"><a href="network-analysis.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb2-5"><a href="network-analysis.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
+<span id="cb2-6"><a href="network-analysis.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb2-7"><a href="network-analysis.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb2-8"><a href="network-analysis.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(network)</span>
+<span id="cb2-9"><a href="network-analysis.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb2-10"><a href="network-analysis.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb2-11"><a href="network-analysis.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygraph)</span>
+<span id="cb2-12"><a href="network-analysis.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-13"><a href="network-analysis.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb2-14"><a href="network-analysis.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb2-15"><a href="network-analysis.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb2-16"><a href="network-analysis.html#cb2-16" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<p>Once you have initiated the session by executing the code shown above, you are good to go.</p>
+</div>
+<div id="data-preparation" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Data preparation<a href="network-analysis.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section shows how to create a network visualization with the <code>network</code> and the <code>GGally</code> packages. The network we will generate shows how often characters in William Shakespeare’s <em>Romeo and Juliet</em> occurred in the same scene. The issue we want to investigate here relates to networks of personas in Shakespeare’s <em>Romeo and Juliet</em> and we thus load this famous work of fiction.</p>
+</div>
+<div id="creating-a-matrix" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Creating a matrix<a href="network-analysis.html#creating-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now that we have loaded the data, we need to split the data into scenes. Scenes during which personas leave or enter will have to be split too so that we arrive at a table that contains the personas that are present during a sub-scene.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="network-analysis.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb3-2"><a href="network-analysis.html#cb3-2" aria-hidden="true" tabindex="-1"></a>rom <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;https://slcladal.github.io/data/romeo_tidy.txt&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="network-analysis.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb3-4"><a href="network-analysis.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb3-5"><a href="network-analysis.html#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rom)</span></code></pre></div>
+<pre><code>##        actscene        person contrib occurrences
+## 1 ACT I_SCENE I      BENVOLIO      24           7
+## 2 ACT I_SCENE I       CAPULET       2           9
+## 3 ACT I_SCENE I FIRST CITIZEN       1           2
+## 4 ACT I_SCENE I  LADY CAPULET       1          10
+## 5 ACT I_SCENE I      MONTAGUE       6           3
+## 6 ACT I_SCENE I        PRINCE       1           3</code></pre>
+<p>We now transform that table into a co-occurrence matrix.</p>
+<template id="738f6dc1-7753-4b70-825b-366796ad20c7"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-29df820c{table-layout:auto;width:95%;}.cl-29d3f8c4{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-29d3f8ce{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-29d426d2{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-29d426dc{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-29d47bb4{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bbe{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bbf{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bc8{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bc9{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bd2{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bd3{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bdc{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47bdd{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47be6{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47be7{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29d47be8{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-29df820c'>
+<caption class="Table Caption">
+<p><span id="tab:na2b">Table 10.1: </span>First 5 rows and 5 columns of the of romeoco-occurrence matrix.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-29d47be7"><p class="cl-29d426d2"><span class="cl-29d3f8c4">Persona</span></p></td><td class="cl-29d47be6"><p class="cl-29d426dc"><span class="cl-29d3f8c4">BALTHASAR</span></p></td><td class="cl-29d47be6"><p class="cl-29d426dc"><span class="cl-29d3f8c4">BENVOLIO</span></p></td><td class="cl-29d47be6"><p class="cl-29d426dc"><span class="cl-29d3f8c4">CAPULET</span></p></td><td class="cl-29d47be6"><p class="cl-29d426dc"><span class="cl-29d3f8c4">FIRST CITIZEN</span></p></td><td class="cl-29d47be8"><p class="cl-29d426dc"><span class="cl-29d3f8c4">FIRST SERVANT</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-29d47bbf"><p class="cl-29d426d2"><span class="cl-29d3f8ce">BALTHASAR</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bbe"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29d47bd2"><p class="cl-29d426d2"><span class="cl-29d3f8ce">BENVOLIO</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">3</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">2</span></p></td><td class="cl-29d47bc9"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29d47bbf"><p class="cl-29d426d2"><span class="cl-29d3f8ce">CAPULET</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">3</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bb4"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td><td class="cl-29d47bbe"><p class="cl-29d426dc"><span class="cl-29d3f8ce">2</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29d47bd2"><p class="cl-29d426d2"><span class="cl-29d3f8ce">FIRST CITIZEN</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">2</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td><td class="cl-29d47bc8"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bc9"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29d47bdd"><p class="cl-29d426d2"><span class="cl-29d3f8ce">FIRST SERVANT</span></p></td><td class="cl-29d47bdc"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bdc"><p class="cl-29d426dc"><span class="cl-29d3f8ce">1</span></p></td><td class="cl-29d47bdc"><p class="cl-29d426dc"><span class="cl-29d3f8ce">2</span></p></td><td class="cl-29d47bdc"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td><td class="cl-29d47bd3"><p class="cl-29d426dc"><span class="cl-29d3f8ce">0</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="29a0a3e1-2314-4e37-af18-edcb99c830ed"></div>
+<script>
+var dest = document.getElementById("29a0a3e1-2314-4e37-af18-edcb99c830ed");
+var template = document.getElementById("738f6dc1-7753-4b70-825b-366796ad20c7");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>The data shows how often a character has appeared with each other character in the play - only Friar Lawrence and Friar John were excluded because they only appear in one scene where they talk to each other.</p>
+</div>
+<div id="network-visualization" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Network Visualization<a href="network-analysis.html#network-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are various different ways to visualize a network structure. We will focus on two packages for network visualization here and exemplify how you can visualize networks in R.</p>
+</div>
+<div id="tidy-networks" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Tidy Networks<a href="network-analysis.html#tidy-networks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A great way to generate network graphs is to combine functions from the <code>igraph</code>, the <code>ggraph</code>, and the <code>tidygraph</code> packages. The advantages are that the syntax of for creating the networks aligns with the tidyverse style of writing R and that the graphs can be modified very easily.</p>
+<p>To generate network graphs in this way, we define the <em>nodes</em> and we can also add information about the odes that we can use later on (such as frequency information).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="network-analysis.html#cb5-1" aria-hidden="true" tabindex="-1"></a>va <span class="ot">&lt;-</span> romeo <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="network-analysis.html#cb5-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Persona =</span> <span class="fu">rownames</span>(.),</span>
+<span id="cb5-3"><a href="network-analysis.html#cb5-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Occurrences =</span> <span class="fu">rowSums</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="network-analysis.html#cb5-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Persona, Occurrences) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="network-analysis.html#cb5-5" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(<span class="sc">!</span><span class="fu">str_detect</span>(Persona, <span class="st">&quot;SCENE&quot;</span>))</span></code></pre></div>
+<template id="bbb9c52a-87ce-46bd-8dd7-a4fe42e4a09f"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-2a065a94{table-layout:auto;width:50%;}.cl-29fcd15e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-29fcd168{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-29fce996{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-29fce9a0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-29fd2a6e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2aa0{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2aaa{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2aab{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2ab4{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2ad2{background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2ad3{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-29fd2adc{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-2a065a94'>
+<caption class="Table Caption">
+<p><span id="tab:tidy4b">Table 10.2: </span>Personas and their frequencies of occurrence in Shakespeare’s <em>Romeo and Juliet</em>.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-29fd2adc"><p class="cl-29fce996"><span class="cl-29fcd15e">Persona</span></p></td><td class="cl-29fd2ad3"><p class="cl-29fce9a0"><span class="cl-29fcd15e">Occurrences</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">BALTHASAR</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">BENVOLIO</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">34</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">CAPULET</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">46</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">FIRST CITIZEN</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">14</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">FIRST SERVANT</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">12</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">FRIAR LAWRENCE</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">20</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">JULIET</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">36</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">LADY CAPULET</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">45</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">MERCUTIO</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">MONTAGUE</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">NURSE</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">38</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">PARIS</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">21</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">PETER</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">PRINCE</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">22</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">ROMEO</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">54</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aaa"><p class="cl-29fce996"><span class="cl-29fcd168">SECOND SERVANT</span></p></td><td class="cl-29fd2aab"><p class="cl-29fce9a0"><span class="cl-29fcd168">16</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2aa0"><p class="cl-29fce996"><span class="cl-29fcd168">SERVANT</span></p></td><td class="cl-29fd2a6e"><p class="cl-29fce9a0"><span class="cl-29fcd168">15</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-29fd2ad2"><p class="cl-29fce996"><span class="cl-29fcd168">TYBALT</span></p></td><td class="cl-29fd2ab4"><p class="cl-29fce9a0"><span class="cl-29fcd168">22</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="4a6b397b-9978-4d5f-b0c1-4545a6703a6d"></div>
+<script>
+var dest = document.getElementById("4a6b397b-9978-4d5f-b0c1-4545a6703a6d");
+var template = document.getElementById("bbb9c52a-87ce-46bd-8dd7-a4fe42e4a09f");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Now, we define the <em>edges</em>, i.e., the connections between nodes and, again, we can add information in separate variables that we can use later on.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="network-analysis.html#cb6-1" aria-hidden="true" tabindex="-1"></a>ed <span class="ot">&lt;-</span> romeo <span class="sc">%&gt;%</span></span>
+<span id="cb6-2"><a href="network-analysis.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">from =</span> <span class="fu">rownames</span>(.)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="network-analysis.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">gather</span>(to, Frequency, BALTHASAR<span class="sc">:</span>TYBALT) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="network-analysis.html#cb6-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">Frequency =</span> <span class="fu">ifelse</span>(Frequency <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, Frequency))</span></code></pre></div>
+<template id="b436872e-859e-437c-b3bf-bfbac3096329"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-2a287db8{table-layout:auto;width:50%;}.cl-2a1dc1c0{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2a1dc1ca{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-2a1de7ae{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2a1de7b8{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-2a1e9942{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9943{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e994c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e994d{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9956{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9957{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9958{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9959{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9960{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e9961{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e996a{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-2a1e996b{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-2a287db8'>
+<caption class="Table Caption">
+<p><span id="tab:tidy5b">Table 10.3: </span>Edges between personasin Shakespeare’s <em>Romeo and Juliet</em>.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-2a1e996a"><p class="cl-2a1de7ae"><span class="cl-2a1dc1c0">from</span></p></td><td class="cl-2a1e996b"><p class="cl-2a1de7ae"><span class="cl-2a1dc1c0">to</span></p></td><td class="cl-2a1e9961"><p class="cl-2a1de7b8"><span class="cl-2a1dc1c0">Frequency</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BENVOLIO</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">CAPULET</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">FIRST CITIZEN</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">FIRST SERVANT</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">FRIAR LAWRENCE</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">JULIET</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">LADY CAPULET</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">MERCUTIO</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">MONTAGUE</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">NURSE</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">PARIS</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9943"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">PETER</span></p></td><td class="cl-2a1e994c"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9942"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca"></span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9957"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">PRINCE</span></p></td><td class="cl-2a1e9956"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e994d"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">1</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-2a1e9958"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">ROMEO</span></p></td><td class="cl-2a1e9960"><p class="cl-2a1de7ae"><span class="cl-2a1dc1ca">BALTHASAR</span></p></td><td class="cl-2a1e9959"><p class="cl-2a1de7b8"><span class="cl-2a1dc1ca">2</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="7fd71914-42bf-4244-af2a-c9d7aa451b22"></div>
+<script>
+var dest = document.getElementById("7fd71914-42bf-4244-af2a-c9d7aa451b22");
+var template = document.getElementById("b436872e-859e-437c-b3bf-bfbac3096329");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>Now that we have generated tables for the edges and the nodes, we can generate a graph object.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="network-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a>ig <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">graph_from_data_frame</span>(<span class="at">d=</span>ed, <span class="at">vertices=</span>va, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>We will also add labels to the nodes as follows:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="network-analysis.html#cb8-1" aria-hidden="true" tabindex="-1"></a>tg <span class="ot">&lt;-</span> tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(ig) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="network-analysis.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  tidygraph<span class="sc">::</span><span class="fu">activate</span>(nodes) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="network-analysis.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">label=</span>name)</span></code></pre></div>
+<p>When we now plot our network, it looks as shown below.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="network-analysis.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb9-2"><a href="network-analysis.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb9-3"><a href="network-analysis.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># edge size shows frequency of co-occurrence</span></span>
+<span id="cb9-4"><a href="network-analysis.html#cb9-4" aria-hidden="true" tabindex="-1"></a>tg <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="network-analysis.html#cb9-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="network-analysis.html#cb9-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_edge_arc</span>(<span class="at">colour=</span> <span class="st">&quot;gray50&quot;</span>,</span>
+<span id="cb9-7"><a href="network-analysis.html#cb9-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">lineend =</span> <span class="st">&quot;round&quot;</span>,</span>
+<span id="cb9-8"><a href="network-analysis.html#cb9-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">strength =</span> .<span class="dv">1</span>,</span>
+<span id="cb9-9"><a href="network-analysis.html#cb9-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alpha =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="network-analysis.html#cb9-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), </span>
+<span id="cb9-11"><a href="network-analysis.html#cb9-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">repel =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb9-12"><a href="network-analysis.html#cb9-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">point.padding =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;lines&quot;</span>), </span>
+<span id="cb9-13"><a href="network-analysis.html#cb9-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour=</span><span class="st">&quot;gray10&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-14"><a href="network-analysis.html#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">background =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="network-analysis.html#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">edge_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb9-16"><a href="network-analysis.html#cb9-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge_alpha =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/tidy7b-1.png" width="672" /></p>
+<p>Now, we use the number of occurrences to define vertex size (or node size): the more often a character appears, the bigger it will appear in the graph.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="network-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a>v.size <span class="ot">&lt;-</span> <span class="fu">V</span>(tg)<span class="sc">$</span>Occurrences</span>
+<span id="cb10-2"><a href="network-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect</span></span>
+<span id="cb10-3"><a href="network-analysis.html#cb10-3" aria-hidden="true" tabindex="-1"></a>v.size</span></code></pre></div>
+<pre><code>##  [1]  9 34 46 14 12 20 36 45 15 22 38 21  9 22 54 16 15 22</code></pre>
+<p>When we include this into our network, it looks as shown below.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="network-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb12-2"><a href="network-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb12-3"><a href="network-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># edge size shows frequency of co-occurrence</span></span>
+<span id="cb12-4"><a href="network-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a>tg <span class="sc">%&gt;%</span></span>
+<span id="cb12-5"><a href="network-analysis.html#cb12-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="network-analysis.html#cb12-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_edge_arc</span>(<span class="at">colour=</span> <span class="st">&quot;gray50&quot;</span>,</span>
+<span id="cb12-7"><a href="network-analysis.html#cb12-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lineend =</span> <span class="st">&quot;round&quot;</span>,</span>
+<span id="cb12-8"><a href="network-analysis.html#cb12-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">strength =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-9"><a href="network-analysis.html#cb12-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_point</span>(<span class="at">size=</span><span class="fu">log</span>(v.size)<span class="sc">*</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb12-10"><a href="network-analysis.html#cb12-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), </span>
+<span id="cb12-11"><a href="network-analysis.html#cb12-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">repel =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb12-12"><a href="network-analysis.html#cb12-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">point.padding =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;lines&quot;</span>), </span>
+<span id="cb12-13"><a href="network-analysis.html#cb12-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="fu">sqrt</span>(v.size), </span>
+<span id="cb12-14"><a href="network-analysis.html#cb12-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour=</span><span class="st">&quot;gray10&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-15"><a href="network-analysis.html#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_width</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">2.5</span>)) <span class="sc">+</span></span>
+<span id="cb12-16"><a href="network-analysis.html#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb12-17"><a href="network-analysis.html#cb12-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">background =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb12-18"><a href="network-analysis.html#cb12-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">edge_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb12-19"><a href="network-analysis.html#cb12-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge_alpha =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/tidy8b-1.png" width="672" /></p>
+<p>Next, we modify the edges by using frequency information to define weights: the more often two characters appear in the same scene, the bigger the edge.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="network-analysis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(tg)<span class="sc">$</span>weight <span class="ot">&lt;-</span> <span class="fu">E</span>(tg)<span class="sc">$</span>Frequency</span>
+<span id="cb13-2"><a href="network-analysis.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect weights</span></span>
+<span id="cb13-3"><a href="network-analysis.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">E</span>(tg)<span class="sc">$</span>weight, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##  [1] NA NA  1 NA NA  1  1  1 NA  1</code></pre>
+<p>When we include this into our network, it looks as shown below.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="network-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb15-2"><a href="network-analysis.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb15-3"><a href="network-analysis.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># edge size shows frequency of co-occurrence</span></span>
+<span id="cb15-4"><a href="network-analysis.html#cb15-4" aria-hidden="true" tabindex="-1"></a>tg <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="network-analysis.html#cb15-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="network-analysis.html#cb15-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_edge_arc</span>(<span class="at">colour=</span> <span class="st">&quot;gray50&quot;</span>,</span>
+<span id="cb15-7"><a href="network-analysis.html#cb15-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lineend =</span> <span class="st">&quot;round&quot;</span>,</span>
+<span id="cb15-8"><a href="network-analysis.html#cb15-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">strength =</span> .<span class="dv">1</span>,</span>
+<span id="cb15-9"><a href="network-analysis.html#cb15-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">edge_width =</span> weight,</span>
+<span id="cb15-10"><a href="network-analysis.html#cb15-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> weight)) <span class="sc">+</span></span>
+<span id="cb15-11"><a href="network-analysis.html#cb15-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_point</span>(<span class="at">size=</span><span class="fu">log</span>(v.size)<span class="sc">*</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb15-12"><a href="network-analysis.html#cb15-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), </span>
+<span id="cb15-13"><a href="network-analysis.html#cb15-13" aria-hidden="true" tabindex="-1"></a>                  <span class="at">repel =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb15-14"><a href="network-analysis.html#cb15-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">point.padding =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;lines&quot;</span>), </span>
+<span id="cb15-15"><a href="network-analysis.html#cb15-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="fu">sqrt</span>(v.size), </span>
+<span id="cb15-16"><a href="network-analysis.html#cb15-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour=</span><span class="st">&quot;gray10&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-17"><a href="network-analysis.html#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_width</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">2.5</span>)) <span class="sc">+</span></span>
+<span id="cb15-18"><a href="network-analysis.html#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb15-19"><a href="network-analysis.html#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">background =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-20"><a href="network-analysis.html#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb15-21"><a href="network-analysis.html#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">edge_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb15-22"><a href="network-analysis.html#cb15-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge_alpha =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/tidy10b-1.png" width="672" /></p>
+<p>Finally, we define colors so that characters belonging to the same family have the same color.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="network-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define colors (by family)</span></span>
+<span id="cb16-2"><a href="network-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a>mon <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ABRAM&quot;</span>, <span class="st">&quot;BALTHASAR&quot;</span>, <span class="st">&quot;BENVOLIO&quot;</span>, <span class="st">&quot;LADY MONTAGUE&quot;</span>, <span class="st">&quot;MONTAGUE&quot;</span>, <span class="st">&quot;ROMEO&quot;</span>)</span>
+<span id="cb16-3"><a href="network-analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a>cap <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;CAPULET&quot;</span>, <span class="st">&quot;CAPULET?S COUSIN&quot;</span>, <span class="st">&quot;FIRST SERVANT&quot;</span>, <span class="st">&quot;GREGORY&quot;</span>, <span class="st">&quot;JULIET&quot;</span>, <span class="st">&quot;LADY CAPULET&quot;</span>, <span class="st">&quot;NURSE&quot;</span>, <span class="st">&quot;PETER&quot;</span>, <span class="st">&quot;SAMPSON&quot;</span>, <span class="st">&quot;TYBALT&quot;</span>)</span>
+<span id="cb16-4"><a href="network-analysis.html#cb16-4" aria-hidden="true" tabindex="-1"></a>oth <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;APOTHECARY&quot;</span>, <span class="st">&quot;CHORUS&quot;</span>, <span class="st">&quot;FIRST CITIZEN&quot;</span>, <span class="st">&quot;FIRST MUSICIAN&quot;</span>, <span class="st">&quot;FIRST WATCH&quot;</span>, <span class="st">&quot;FRIAR JOHN&quot;</span> , <span class="st">&quot;FRIAR LAWRENCE&quot;</span>, <span class="st">&quot;MERCUTIO&quot;</span>, <span class="st">&quot;PAGE&quot;</span>, <span class="st">&quot;PARIS&quot;</span>, <span class="st">&quot;PRINCE&quot;</span>, <span class="st">&quot;SECOND MUSICIAN&quot;</span>, <span class="st">&quot;SECOND SERVANT&quot;</span>, <span class="st">&quot;SECOND WATCH&quot;</span>, <span class="st">&quot;SERVANT&quot;</span>, <span class="st">&quot;THIRD MUSICIAN&quot;</span>)</span>
+<span id="cb16-5"><a href="network-analysis.html#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># create color vectors</span></span>
+<span id="cb16-6"><a href="network-analysis.html#cb16-6" aria-hidden="true" tabindex="-1"></a>Family <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(<span class="fu">sapply</span>(tg, <span class="st">&quot;[&quot;</span>)<span class="sc">$</span>nodes<span class="sc">$</span>name <span class="sc">%in%</span> mon <span class="sc">~</span> <span class="st">&quot;MONTAGUE&quot;</span>,</span>
+<span id="cb16-7"><a href="network-analysis.html#cb16-7" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">sapply</span>(tg, <span class="st">&quot;[&quot;</span>)<span class="sc">$</span>nodes<span class="sc">$</span>name <span class="sc">%in%</span> cap <span class="sc">~</span> <span class="st">&quot;CAPULET&quot;</span>,</span>
+<span id="cb16-8"><a href="network-analysis.html#cb16-8" aria-hidden="true" tabindex="-1"></a>                           <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;Other&quot;</span>)</span>
+<span id="cb16-9"><a href="network-analysis.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect colors</span></span>
+<span id="cb16-10"><a href="network-analysis.html#cb16-10" aria-hidden="true" tabindex="-1"></a>Family</span></code></pre></div>
+<pre><code>##  [1] &quot;MONTAGUE&quot; &quot;MONTAGUE&quot; &quot;CAPULET&quot;  &quot;Other&quot;    &quot;CAPULET&quot;  &quot;Other&quot;   
+##  [7] &quot;CAPULET&quot;  &quot;CAPULET&quot;  &quot;Other&quot;    &quot;MONTAGUE&quot; &quot;CAPULET&quot;  &quot;Other&quot;   
+## [13] &quot;CAPULET&quot;  &quot;Other&quot;    &quot;MONTAGUE&quot; &quot;Other&quot;    &quot;Other&quot;    &quot;CAPULET&quot;</code></pre>
+<p>Now, that we have created the different objects and defined their properties, we can finally visualize the finished network.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="network-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set seed</span></span>
+<span id="cb18-2"><a href="network-analysis.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb18-3"><a href="network-analysis.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># edge size shows frequency of co-occurrence</span></span>
+<span id="cb18-4"><a href="network-analysis.html#cb18-4" aria-hidden="true" tabindex="-1"></a>tg <span class="sc">%&gt;%</span></span>
+<span id="cb18-5"><a href="network-analysis.html#cb18-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">&quot;fr&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="network-analysis.html#cb18-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_edge_arc</span>(<span class="at">colour=</span> <span class="st">&quot;gray50&quot;</span>,</span>
+<span id="cb18-7"><a href="network-analysis.html#cb18-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">lineend =</span> <span class="st">&quot;round&quot;</span>,</span>
+<span id="cb18-8"><a href="network-analysis.html#cb18-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">strength =</span> .<span class="dv">1</span>,</span>
+<span id="cb18-9"><a href="network-analysis.html#cb18-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">aes</span>(<span class="at">edge_width =</span> weight,</span>
+<span id="cb18-10"><a href="network-analysis.html#cb18-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">alpha =</span> weight)) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="network-analysis.html#cb18-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_point</span>(<span class="at">size=</span><span class="fu">log</span>(v.size)<span class="sc">*</span><span class="dv">2</span>, </span>
+<span id="cb18-12"><a href="network-analysis.html#cb18-12" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">aes</span>(<span class="at">color=</span>Family)) <span class="sc">+</span></span>
+<span id="cb18-13"><a href="network-analysis.html#cb18-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), </span>
+<span id="cb18-14"><a href="network-analysis.html#cb18-14" aria-hidden="true" tabindex="-1"></a>                  <span class="at">repel =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb18-15"><a href="network-analysis.html#cb18-15" aria-hidden="true" tabindex="-1"></a>                  <span class="at">point.padding =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">&quot;lines&quot;</span>), </span>
+<span id="cb18-16"><a href="network-analysis.html#cb18-16" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="fu">sqrt</span>(v.size), </span>
+<span id="cb18-17"><a href="network-analysis.html#cb18-17" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour=</span><span class="st">&quot;gray10&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="network-analysis.html#cb18-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_width</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">2.5</span>)) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="network-analysis.html#cb18-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_edge_alpha</span>(<span class="at">range =</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">3</span>)) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="network-analysis.html#cb18-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_graph</span>(<span class="at">background =</span> <span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-21"><a href="network-analysis.html#cb18-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;top&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-22"><a href="network-analysis.html#cb18-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">edge_width =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-23"><a href="network-analysis.html#cb18-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">edge_alpha =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/tidy11-1.png" width="672" /></p>
+</div>
+<div id="quanteda-networks" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Quanteda Networks<a href="network-analysis.html#quanteda-networks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>quanteda</code> package contains many very useful functions for analyzing texts. Among these functions is the <code>textplot_network</code> function which provides a very handy way to display networks. The advantage of the network plots provided by or generated with the <code>quanteda</code> package is that you can create them with very little code. However, this comes at a cost as these visualizations cannot be modified easily (which means that their design is not very flexible compared to other methods for generating network visualizations).</p>
+<p>In a first step, we transform the text vectors of the <code>romeo</code> data into a document-feature matrix using the <code>dfm</code> function.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="network-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a document feature matrix</span></span>
+<span id="cb19-2"><a href="network-analysis.html#cb19-2" aria-hidden="true" tabindex="-1"></a>romeo_dfm <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">as.dfm</span>(romeo)</span>
+<span id="cb19-3"><a href="network-analysis.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create feature co-occurrence matrix</span></span>
+<span id="cb19-4"><a href="network-analysis.html#cb19-4" aria-hidden="true" tabindex="-1"></a>romeo_fcm <span class="ot">&lt;-</span> quanteda<span class="sc">::</span><span class="fu">fcm</span>(romeo_dfm)</span>
+<span id="cb19-5"><a href="network-analysis.html#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect data</span></span>
+<span id="cb19-6"><a href="network-analysis.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(romeo_fcm)</span></code></pre></div>
+<pre><code>## Feature co-occurrence matrix of: 6 by 18 features.
+##                 features
+## features         BALTHASAR BENVOLIO CAPULET FIRST CITIZEN FIRST SERVANT
+##   BALTHASAR              1       25      31            11             6
+##   BENVOLIO               0       39      93            39            27
+##   CAPULET                0        0      65            42            39
+##   FIRST CITIZEN          0        0       0             6            10
+##   FIRST SERVANT          0        0       0             0             3
+##   FRIAR LAWRENCE         0        0       0             0             0
+##                 features
+## features         FRIAR LAWRENCE JULIET LADY CAPULET MERCUTIO MONTAGUE
+##   BALTHASAR                  20     26           31       11       17
+##   BENVOLIO                   53     87           99       42       55
+##   CAPULET                    74    131          117       52       65
+##   FIRST CITIZEN              18     32           36       24       29
+##   FIRST SERVANT              17     40           42       12       15
+##   FRIAR LAWRENCE             15     61           72       23       32
+## [ reached max_nfeat ... 8 more features ]</code></pre>
+<p>This feature-co-occurrence matrix can then serve as the input for the <code>textplot_network</code> function which already generates a nice network graph. The network graph can then be modified or customized easily by defining the arguments of the <code>textplot_network</code> function. To see how and which arguments can be modified, you can use <code>?textplot_network</code>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="network-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a>quanteda.textplots<span class="sc">::</span><span class="fu">textplot_network</span>(romeo_fcm, </span>
+<span id="cb21-2"><a href="network-analysis.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">min_freq =</span> .<span class="dv">5</span>, </span>
+<span id="cb21-3"><a href="network-analysis.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">edge_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb21-4"><a href="network-analysis.html#cb21-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">edge_color =</span> <span class="st">&quot;purple&quot;</span>,</span>
+<span id="cb21-5"><a href="network-analysis.html#cb21-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">vertex_labelsize =</span> <span class="fu">log</span>(<span class="fu">rowSums</span>(romeo_fcm)),</span>
+<span id="cb21-6"><a href="network-analysis.html#cb21-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">edge_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/qtda04-1.png" width="672" /></p>
+</div>
+<div id="igraph-networks" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> iGraph Networks<a href="network-analysis.html#igraph-networks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="citation">Wiedemann and Niekler (<a href="#ref-WN17" role="doc-biblioref">2017</a>)</span> have written a very recommendable tutorial on co-occurrence analysis and they propose an alternative for generating complex network visualization for co-occurrences. Their approach is to create and customize a graph object based on the <code>iGraph</code> package. To see how to create sophisticated network graphs using the <code>iGraph</code> package, see <a href="https://slcladal.github.io/coll.html">this tutorial</a> on analyzing collocations or <a href="https://tm4ss.github.io/docs/Tutorial_5_Co-occurrence.html">this tutorial</a>.</p>
+</div>
+<div id="network-statistics" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Network Statistics<a href="network-analysis.html#network-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In addition to visualizing networks, we will analyze the network and extract certain statistics about the network that tell us about structural properties of networks. In the present case, we will extract</p>
+<p>To extract the statistics, we use the edge object generated above (called <code>ed</code>) and remove all rows that contain missing values (<code>NA</code>) and then repeat each combination as often as it occurred based on the value in the <code>Frequency</code> column.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="network-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">&lt;-</span> ed <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href="network-analysis.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">drop_na</span>()</span>
+<span id="cb22-3"><a href="network-analysis.html#cb22-3" aria-hidden="true" tabindex="-1"></a>dg <span class="ot">&lt;-</span> dg[<span class="fu">rep</span>(<span class="fu">seq_along</span>(dg<span class="sc">$</span>Frequency), dg<span class="sc">$</span>Frequency), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span>
+<span id="cb22-4"><a href="network-analysis.html#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(dg) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
+<p>The resulting object (<code>dg</code>) looks as shown below.</p>
+<template id="cfc3e193-8988-4d06-93b8-176965865c0b"><style>
+.tabwid table{
+  border-spacing:0px !important;
+  border-collapse:collapse;
+  line-height:1;
+  margin-left:auto;
+  margin-right:auto;
+  border-width: 0;
+  display: table;
+  margin-top: 1.275em;
+  margin-bottom: 1.275em;
+  border-color: transparent;
+}
+.tabwid_left table{
+  margin-left:0;
+}
+.tabwid_right table{
+  margin-right:0;
+}
+.tabwid td {
+    padding: 0;
+}
+.tabwid a {
+  text-decoration: none;
+}
+.tabwid thead {
+    background-color: transparent;
+}
+.tabwid tfoot {
+    background-color: transparent;
+}
+.tabwid table tr {
+background-color: transparent;
+}
+</style><div class="tabwid"><style>.cl-30860d7e{table-layout:auto;width:95%;}.cl-307c677e{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-307c6788{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-307c7e3a{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-307cb8c8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8d2{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8dc{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8dd{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8de{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8e6{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8f0{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-307cb8fa{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table class='cl-30860d7e'>
+<caption class="Table Caption">
+<p><span id="tab:nstat1b">Table 10.4: </span>First 15 rows of dg data.</p>
+</caption>
+<thead><tr style="overflow-wrap:break-word;"><td class="cl-307cb8f0"><p class="cl-307c7e3a"><span class="cl-307c677e">from</span></p></td><td class="cl-307cb8fa"><p class="cl-307c7e3a"><span class="cl-307c677e">to</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">CAPULET</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">FRIAR LAWRENCE</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">JULIET</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">LADY CAPULET</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">MONTAGUE</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">PARIS</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">PRINCE</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">ROMEO</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">ROMEO</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BALTHASAR</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">CAPULET</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">CAPULET</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">CAPULET</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8c8"><p class="cl-307c7e3a"><span class="cl-307c6788">FIRST CITIZEN</span></p></td><td class="cl-307cb8d2"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8dc"><p class="cl-307c7e3a"><span class="cl-307c6788">FIRST CITIZEN</span></p></td><td class="cl-307cb8dd"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-307cb8de"><p class="cl-307c7e3a"><span class="cl-307c6788">FIRST SERVANT</span></p></td><td class="cl-307cb8e6"><p class="cl-307c7e3a"><span class="cl-307c6788">BENVOLIO</span></p></td></tr></tbody></table></div></template>
+<div class="flextable-shadow-host" id="620fa642-3306-41d4-bb7b-ed109e5e7cdb"></div>
+<script>
+var dest = document.getElementById("620fa642-3306-41d4-bb7b-ed109e5e7cdb");
+var template = document.getElementById("cfc3e193-8988-4d06-93b8-176965865c0b");
+var caption = template.content.querySelector("caption");
+if(caption) {
+  caption.style.cssText = "display:block;text-align:center;";
+  var newcapt = document.createElement("p");
+  newcapt.appendChild(caption)
+  dest.parentNode.insertBefore(newcapt, dest.previousSibling);
+}
+var fantome = dest.attachShadow({mode: 'open'});
+var templateContent = template.content;
+fantome.appendChild(templateContent);
+</script>
+
+<p>We now generate an edge list from the <code>dg</code> object and then extract the <em>degree centrality</em> of all edges in the <code>dg</code> object by using the <code>degree</code> function from the <code>igraph</code> package. The <em>degree centrality</em> reflects the counts of how many edges each node has. The most central node is the one with with the highest value of ties.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="network-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a>dgg <span class="ot">&lt;-</span> <span class="fu">graph.edgelist</span>(<span class="fu">as.matrix</span>(dg), <span class="at">directed =</span> T)</span>
+<span id="cb23-2"><a href="network-analysis.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># extract degree centrality</span></span>
+<span id="cb23-3"><a href="network-analysis.html#cb23-3" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">degree</span>(dgg) </span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##             92             18             40             72             90 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##             44             42             44            108             68 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##             28             24             30             76             18 
+## SECOND SERVANT        SERVANT         TYBALT 
+##             32             30             44</code></pre>
+<p>To extract the most central node, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="network-analysis.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">degree</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;ROMEO&quot;</code></pre>
+<p>We now extract the <em>betweenness centrality</em> of all edges in the <code>dg</code> object by using the <code>betweenness</code> function from the <code>igraph</code> package. <em>Betweenness centrality</em> reflects how connected nodes are. More precisely, it provides a measure of how important noes are for information flow between nodes in a network. The node with the highest betweenness centrality creates the shortest paths in the network. For any two nodes we can find the shortest path, i.e. the path with the lowest number of steps that are necessary to get from the node A to node B. If a node C facilitates the shortest path between A and B, then it means C is important to the efficient flow of information between A and B.</p>
+<p>Thus, betweenness effectively counts how many shortest paths each node is on. The higher a node?s betweenness, the more important they are for the efficient flow of goods in a network.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="network-analysis.html#cb27-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg)</span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##    15.62321868     0.00000000     1.09118044     5.55471008    16.27686423 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##     2.18220323     1.85942942     2.18220323    27.62437026     9.61512099 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##     0.03846154     0.00000000     0.84421390     7.40145363     0.26841707 
+## SECOND SERVANT        SERVANT         TYBALT 
+##     0.00000000     0.23874480     3.19940849</code></pre>
+<p>To extract the most central node, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="network-analysis.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">betweenness</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;ROMEO&quot;</code></pre>
+<p>In addition, we extract the closeness statistic of all edges in the <code>dg</code> object by using the <code>closeness</code> function from the <code>igraph</code> package. Closeness centrality refers to the shortest paths between nodes. The distance between two nodes represents the length of the shortest path between them. The closeness of a node is the average distance from that node to all other nodes.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="network-analysis.html#cb31-1" aria-hidden="true" tabindex="-1"></a>igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg)</span></code></pre></div>
+<pre><code>##        CAPULET      BALTHASAR FRIAR LAWRENCE         JULIET   LADY CAPULET 
+##     0.05555556     0.03846154     0.04166667     0.05000000     0.05882353 
+##       MONTAGUE          PARIS         PRINCE          ROMEO       BENVOLIO 
+##     0.04545455     0.04545455     0.04545455     0.05882353     0.05263158 
+##  FIRST CITIZEN  FIRST SERVANT       MERCUTIO          NURSE          PETER 
+##     0.03846154     0.04000000     0.04000000     0.04761905     0.03846154 
+## SECOND SERVANT        SERVANT         TYBALT 
+##     0.04000000     0.04166667     0.04761905</code></pre>
+<p>To extract the node with the highest closeness, we can use the <code>max()</code> function to extract the name of the node with the most edges.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="network-analysis.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg))[<span class="fu">which</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg) <span class="sc">==</span> <span class="fu">max</span>(igraph<span class="sc">::</span><span class="fu">closeness</span>(dgg)))]</span></code></pre></div>
+<pre><code>## [1] &quot;LADY CAPULET&quot; &quot;ROMEO&quot;</code></pre>
+<p>We have reached the end of this tutorial and you now know how to create and modify networks in R and how you can highlight aspects of your data.</p>
+<p><a href="#network_analysis">Back to top</a></p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-silge2017text" class="csl-entry">
+Silge, Julia, and David Robinson. 2017. <em>Text Mining with r: A Tidy Approach</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-WN17" class="csl-entry">
+Wiedemann, Gregor, and Andreas Niekler. 2017. <span>“Hands-on: <span>A</span> Five Day Text Mining Course for Humanists and Social Scientists in <span>R</span>.”</span> In <em>Proceedings of the Workshop on Teaching <span>NLP</span> for Digital Humanities (<span>Teach4DH</span>), Berlin, Germany, September 12, 2017.</em>, 57–65. <a href="http://ceur-ws.org/Vol-1918/wiedemann.pdf">http://ceur-ws.org/Vol-1918/wiedemann.pdf</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analyzing-co-occurrences-and-collocations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pos-tagging-and-syntactic-parsing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/10-network.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/10-network.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

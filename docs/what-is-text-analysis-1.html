@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | SLAT7829 Text and Corpus Analysis</title>
-  <meta name="description" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <title>What is Text Analysis? | SLAT7829 Text and Corpus Analysis</title>
+  <meta name="description" content="What is Text Analysis? | SLAT7829 Text and Corpus Analysis" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <meta property="og:title" content="What is Text Analysis? | SLAT7829 Text and Corpus Analysis" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | SLAT7829 Text and Corpus Analysis" />
+  <meta name="twitter:title" content="What is Text Analysis? | SLAT7829 Text and Corpus Analysis" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Martin Schweinberger" />
 
 
-<meta name="date" content="2022-05-10" />
+<meta name="date" content="2022-05-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-
+<link rel="prev" href="network-analysis.html"/>
+<link rel="next" href="data-preparation.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,9 +52,77 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/clipboard-1.7.1/clipboard.min.js"></script>
+<link href="libs/primer-tooltips-1.4.0/build.css" rel="stylesheet" />
+<link href="libs/klippy-0.0.0.9500/css/klippy.min.css" rel="stylesheet" />
+<script src="libs/klippy-0.0.0.9500/js/klippy.min.js"></script>
 <link href="libs/tabwid-1.0.0/tabwid.css" rel="stylesheet" />
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -222,28 +290,32 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#covarying-collexeme-analysis"><i class="fa fa-check"></i>Covarying Collexeme Analysis</a></li>
 <li class="chapter" data-level="" data-path="analyzing-co-occurrences-and-collocations.html"><a href="analyzing-co-occurrences-and-collocations.html#distinctive-collexeme-analysis"><i class="fa fa-check"></i>Distinctive Collexeme Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a>
+<li class="chapter" data-level="10" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>10</b> Network Analysis</a></li>
+<li class="chapter" data-level="" data-path="what-is-text-analysis-1.html"><a href="what-is-text-analysis-1.html"><i class="fa fa-check"></i>What is Text Analysis?</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html"><i class="fa fa-check"></i>Data preparation</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="network-analysis.html"><a href="network-analysis.html#what-is-network-analysis"><i class="fa fa-check"></i><b>10.1</b> What is Network Analysis?</a></li>
-<li class="chapter" data-level="10.2" data-path="network-analysis.html"><a href="network-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i><b>10.2</b> Preparation and session set up</a></li>
-<li class="chapter" data-level="10.3" data-path="network-analysis.html"><a href="network-analysis.html#data-preparation"><i class="fa fa-check"></i><b>10.3</b> Data preparation</a></li>
-<li class="chapter" data-level="10.4" data-path="network-analysis.html"><a href="network-analysis.html#creating-a-matrix"><i class="fa fa-check"></i><b>10.4</b> Creating a matrix</a></li>
-<li class="chapter" data-level="10.5" data-path="network-analysis.html"><a href="network-analysis.html#network-visualization"><i class="fa fa-check"></i><b>10.5</b> Network Visualization</a></li>
-<li class="chapter" data-level="10.6" data-path="network-analysis.html"><a href="network-analysis.html#tidy-networks"><i class="fa fa-check"></i><b>10.6</b> Tidy Networks</a></li>
-<li class="chapter" data-level="10.7" data-path="network-analysis.html"><a href="network-analysis.html#quanteda-networks"><i class="fa fa-check"></i><b>10.7</b> Quanteda Networks</a></li>
-<li class="chapter" data-level="10.8" data-path="network-analysis.html"><a href="network-analysis.html#network-statistics"><i class="fa fa-check"></i><b>10.8</b> Network Statistics</a></li>
+<li class="chapter" data-level="" data-path="data-preparation.html"><a href="data-preparation.html#creating-a-matrix"><i class="fa fa-check"></i>Creating a matrix</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html"><i class="fa fa-check"></i>Network Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#tidy-networks"><i class="fa fa-check"></i>Tidy Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#quanteda-networks"><i class="fa fa-check"></i>Quanteda Networks</a></li>
+<li class="chapter" data-level="" data-path="network-visualization.html"><a href="network-visualization.html#igraph-networks"><i class="fa fa-check"></i>iGraph Networks</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="network-statistics.html"><a href="network-statistics.html"><i class="fa fa-check"></i>Network Statistics</a></li>
+<li class="chapter" data-level="" data-path="citation-session-info.html"><a href="citation-session-info.html"><i class="fa fa-check"></i>Citation &amp; Session Info</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="11" data-path="pos-tagging-and-syntactic-parsing.html"><a href="pos-tagging-and-syntactic-parsing.html"><i class="fa fa-check"></i><b>11</b> POS-Tagging and Syntactic Parsing</a></li>
 <li class="chapter" data-level="12" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html"><i class="fa fa-check"></i><b>12</b> Sentiment Analysis</a>
 <ul>
-<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#preparation-and-session-set-up"><i class="fa fa-check"></i>Preparation and session set up</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#getting-started"><i class="fa fa-check"></i>Getting started</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#binning"><i class="fa fa-check"></i>Binning</a></li>
 <li class="chapter" data-level="" data-path="sentiment-analysis.html"><a href="sentiment-analysis.html#moving-average"><i class="fa fa-check"></i>Moving average</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="topic-modeling.html"><a href="topic-modeling.html"><i class="fa fa-check"></i><b>13</b> Topic Modeling</a>
 <ul>
-<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-2"><i class="fa fa-check"></i>Preparation and session set up</a></li>
+<li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#preparation-and-session-set-up-1"><i class="fa fa-check"></i>Preparation and session set up</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#model-calculation"><i class="fa fa-check"></i>Model calculation</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#visualization-of-words-and-topics"><i class="fa fa-check"></i>Visualization of Words and Topics</a></li>
 <li class="chapter" data-level="" data-path="topic-modeling.html"><a href="topic-modeling.html#topic-distributions"><i class="fa fa-check"></i>Topic distributions</a></li>
@@ -274,19 +346,70 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="what-is-text-analysis-1" class="section level1 unnumbered hasAnchor">
+<h1>What is Text Analysis?<a href="what-is-text-analysis-1.html#what-is-text-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The most common way to visualize relationships between entities are networks <span class="citation">(<a href="#ref-silge2017text" role="doc-biblioref">Silge and Robinson 2017, 131–37</a>)</span>. Networks, also called graphs, consist of nodes (typically represented as dots) and edges (typically represented as lines) and they can be directed or undirected networks.</p>
+<p>In directed networks, the direction of edges is captured. For instance, the exports of countries. In such cases the lines are directed and typically have arrows to indicate direction. The thickness of lines can also be utilized to encode information such as frequency of contact.</p>
+<p>The example that we will be concerned with focuses on the first type of data as it is by far the most common way in which relationships are coded.To show how to create a network, we will have a look at the network that the characters in William Shakespeare’s <em>Romeo and Juliet</em> form.</p>
+<p><strong>Preparation and session set up</strong></p>
+<p>This tutorial is based on R. If you have not installed R or are new to it, you will find an introduction to and more information how to use R <a href="https://slcladal.github.io/intror.html">here</a>. For this tutorials, we need to install certain <em>packages</em> from an R <em>library</em> so that the scripts shown below are executed without errors. Before turning to the code below, please install the packages by running the code below this paragraph. If you have already installed the packages mentioned below, then you can skip ahead and ignore this section. To install the necessary packages, simply run the following code - it may take some time (between 1 and 5 minutes to install all of the libraries so you do not need to worry if it takes some time).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="what-is-text-analysis-1.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages</span></span>
+<span id="cb1-2"><a href="what-is-text-analysis-1.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;flextable&quot;</span>)</span>
+<span id="cb1-3"><a href="what-is-text-analysis-1.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span>
+<span id="cb1-4"><a href="what-is-text-analysis-1.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggraph&quot;</span>)</span>
+<span id="cb1-5"><a href="what-is-text-analysis-1.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gutenbergr&quot;</span>)</span>
+<span id="cb1-6"><a href="what-is-text-analysis-1.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb1-7"><a href="what-is-text-analysis-1.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;Matrix&quot;</span>)</span>
+<span id="cb1-8"><a href="what-is-text-analysis-1.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;network&quot;</span>)</span>
+<span id="cb1-9"><a href="what-is-text-analysis-1.html#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda&quot;</span>)</span>
+<span id="cb1-10"><a href="what-is-text-analysis-1.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sna&quot;</span>)</span>
+<span id="cb1-11"><a href="what-is-text-analysis-1.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidygraph&quot;</span>)</span>
+<span id="cb1-12"><a href="what-is-text-analysis-1.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</span>
+<span id="cb1-13"><a href="what-is-text-analysis-1.html#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tm&quot;</span>)</span>
+<span id="cb1-14"><a href="what-is-text-analysis-1.html#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tibble&quot;</span>)</span>
+<span id="cb1-15"><a href="what-is-text-analysis-1.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;quanteda.textplots&quot;</span>)</span>
+<span id="cb1-16"><a href="what-is-text-analysis-1.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># install klippy for copy-to-clipboard button in code chunks</span></span>
+<span id="cb1-17"><a href="what-is-text-analysis-1.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;remotes&quot;</span>)</span>
+<span id="cb1-18"><a href="what-is-text-analysis-1.html#cb1-18" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;rlesur/klippy&quot;</span>)</span></code></pre></div>
+<p>Next, we load the packages.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="what-is-text-analysis-1.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set options</span></span>
+<span id="cb2-2"><a href="what-is-text-analysis-1.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">stringsAsFactors =</span> F)         <span class="co"># no automatic data transformation</span></span>
+<span id="cb2-3"><a href="what-is-text-analysis-1.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;scipen&quot;</span> <span class="ot">=</span> <span class="dv">100</span>, <span class="st">&quot;digits&quot;</span> <span class="ot">=</span> <span class="dv">4</span>) <span class="co"># suppress math annotation</span></span>
+<span id="cb2-4"><a href="what-is-text-analysis-1.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># activate packages</span></span>
+<span id="cb2-5"><a href="what-is-text-analysis-1.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(flextable)</span>
+<span id="cb2-6"><a href="what-is-text-analysis-1.html#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb2-7"><a href="what-is-text-analysis-1.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb2-8"><a href="what-is-text-analysis-1.html#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gutenbergr)</span>
+<span id="cb2-9"><a href="what-is-text-analysis-1.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb2-10"><a href="what-is-text-analysis-1.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Matrix)</span>
+<span id="cb2-11"><a href="what-is-text-analysis-1.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(network)</span>
+<span id="cb2-12"><a href="what-is-text-analysis-1.html#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span>
+<span id="cb2-13"><a href="what-is-text-analysis-1.html#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sna)</span>
+<span id="cb2-14"><a href="what-is-text-analysis-1.html#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidygraph)</span>
+<span id="cb2-15"><a href="what-is-text-analysis-1.html#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-16"><a href="what-is-text-analysis-1.html#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tm)</span>
+<span id="cb2-17"><a href="what-is-text-analysis-1.html#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb2-18"><a href="what-is-text-analysis-1.html#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># activate klippy for copy-to-clipboard button</span></span>
+<span id="cb2-19"><a href="what-is-text-analysis-1.html#cb2-19" aria-hidden="true" tabindex="-1"></a>klippy<span class="sc">::</span><span class="fu">klippy</span>()</span></code></pre></div>
+<script>
+  addClassKlippyTo("pre.r, pre.markdown");
+  addKlippy('left', 'top', 'auto', '1', 'Copy code', 'Copied!');
+</script>
+<p>Once you have installed R, RStudio, and have also initiated the session by executing the code shown above, you are good to go.</p>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-silge2017text" class="csl-entry">
+Silge, Julia, and David Robinson. 2017. <em>Text Mining with r: A Tidy Approach</em>. " O’Reilly Media, Inc.".
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="network-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-preparation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -317,7 +440,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/%s",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/10-network.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -325,7 +448,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/%s",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/10-network.Rmd",
 "text": null
 },
 "download": null,

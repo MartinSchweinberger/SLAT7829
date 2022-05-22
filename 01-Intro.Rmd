@@ -1,1 +1,45 @@
-# What is Text and Corpus Analysis
+# Text and Corpus Analysis
+
+This week introduces Text and Corpus Analysis. This tutorial basic concepts adn explains common procedures. The aim is to show and exemplify selected useful methods associated with text analysis and corpus linguistics. 
+
+
+## What is Text Analysis?
+
+Tect Analysis can be defined as  the computer-based analysis of language data or the (semi-)automated extraction of information from text [see @bernard1998text; @kabanoff1997introduction; @popping2000computer]. Since Text Analysis extracts and analyses information from language data, it can be considered a derivative of computational linguistics or an application of *Natural Language Processing* (NLP) to HASS research. As such, Text Analysis represents the application of computational methods in the humanities. 
+
+The advantages of Text Analysis include:
+* Extraction of information from large textual datasets
+* Replicability
+
+Text Mining, Text Analytics, and Distant Reading are synonymous with Text Analysis. In some cases, Text Analysis is considered more qualitative while Text Analytics is considered to be quantitative. This distinction is not taken up here as Text Analysis, while allowing for qualitative analysis, builds upon quantitative information, i.e. information about frequencies or conditional probabilities. 
+
+```{r ngram, echo=FALSE, out.width= "60%", out.extra='style="float:right; padding:10px"'}
+knitr::include_graphics("https://slcladal.github.io/images/GoogleNgram.png")
+```
+
+Distant Reading is a cover term for applications of Text Analysis that allow to investigate literary and cultural trends by analysing large amounts of textual data. close reading refers to reading texts in the traditional sense. Text Analysis and distant reading are similar with respect to the methods that are used but with different outlooks. The outlook of distant reading is to extract information from text without close reading, i.e. reading the document(s) itself but rather focusing on emerging patterns in the language that is used. 
+
+Text Analysis or Distant Reading are rapidly gaining popularity in the humanities because textual data is readily available and because computational methods can be applied to a huge variety of research questions. The attractiveness of computational text analysis based on digitally available texts and in their capability to provide insights that cannot be derived from close reading techniques.
+
+```{r shakespeare, echo=FALSE, out.width= "60%", out.extra='style="float:right; padding:10px"'}
+knitr::include_graphics("https://slcladal.github.io/images/romeonet.png")
+```
+
+While rapidly growing as a valid approach to analyzing textual data, Text Analysis is [critizised](https://www.chronicle.com/article/The-Digital-Humanities-Debacle/245986)  for lack of "quantitative rigor and because its findings are either banal or, if interesting, not statistically robust (see [here](https://www.chronicle.com/article/The-Digital-Humanities-Debacle/245986). This criticism is correct in that most of the analysis that performed in *Computational Literary Studies* (CLS) are not yet as rigorous as analyses in fields that have a longer history of computational based, quantitative research, such as, for instance, corpus linguistics. However, the practices and methods used in CLS will be refined, adapted and show a rapid increase in quality if more research is devoted to these approaches. Text Analysis simply offers an alternative way to analyze texts that is not in competition to traditional techniques but rather complements them.
+
+So far, most of the applications of Text Analysis are based upon a relatively limited number of key procedures or concepts (e.g. concordancing, word frequencies, annotation or tagging, parsing, collocation, text classification, Sentiment Analysis, Entity Extraction, Topic Modeling, etc.). In the following, we will explore these procedures and introduce some basic tools that help you perform the introduced tasks. 
+
+## Text Analysis at UQ
+
+The [UQ Library](https://www.library.uq.edu.au/) offers a very handy and attractive summary of [resources, concepts, and tools](https://guides.library.uq.edu.au/research-techniques/text-mining-analysis/introduction) that can be used by researchers interested in Text Analysis and Distant Reading. Also, the UQ library site offers short video introductions and addresses issues that are not discussed here such as [copyright issues](https://guides.library.uq.edu.au/research-techniques/text-mining-analysis/considerations), [data sources available at the UQ library](https://guides.library.uq.edu.au/research-techniques/text-mining-analysis/sources-of-text-data), as well as [social media](https://guides.library.uq.edu.au/research-techniques/text-mining-analysis/sources-of-text-data) and [web scaping](https://guides.library.uq.edu.au/research-techniques/text-mining-analysis/web-scraping).
+
+In contrast to the UQ library site, the focus of this introduction lies on the practical how-to of text analysis. this means that the following concentrates on how to perform analyses rather than discussing their underlying concepts or evaluating their scientific merits. 
+
+## A few words about Tools and Scripts
+
+It is perfectly fine to use tools for the analyses exemplified below. However, the aim here is not primarily to show how to perform text analyses but how to perform text analyses in a way that complies with practices that guarantee sustainable, transparent, reproducible research. As R code can be readily shared and optimally contains all the data extraction, processing, visualization, and analysis steps, using scripts is preferable over using (commercial) software. 
+
+In addition to being not as transparent and hindering reproduction of research, using tools can also lead to dependencies on third parties which does not arise when using open source software. 
+
+Finally, the widespread use of R particularly among data scientists, engineers, and analysts reduces the risk of software errors as a very active community corrects flawed functions typically quite rapidly. 
+
