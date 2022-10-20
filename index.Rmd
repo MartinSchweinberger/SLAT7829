@@ -86,17 +86,15 @@ After successfully completing this course you should be able to:
 
 The script for the course is made available on 
 
-[https://MartinSchweinberger.github.io/SLAT7855](https://MartinSchweinberger.github.io/SLAT7829)
+[https://MartinSchweinberger.github.io/SLAT7829](https://MartinSchweinberger.github.io/SLAT7829)
 
 Lecture recordings and tutorial recordings are made available on Blackboard.
 
 ### Recommended Resources {-}
 
-@field2012discovering
+@schweinberger2022introta
 
-@gries2021statistics
-
-@winter2019statistics
+@schweinberger2022ta
 
 
 ### University Learning Resources {-}
@@ -104,9 +102,8 @@ Lecture recordings and tutorial recordings are made available on Blackboard.
 It is strongly recommended to attend the following UQ Library Trainings:
 
 1. R with RStudio: Getting started  
-2. R reproducible reports with R Markdown and knitr  
-3. R data manipulation with RStudio and dplyr: introduction  
-4. R data visualization with RStudio and ggplot2: introduction  
+2. R reproducible reports with R Markdown and knitr    
+3. R data visualization with RStudio and ggplot2: introduction  
 
 
 Access to required and recommended resources, plus past central exam papers, is available at the UQ Library website (http://www.library.uq.edu.au/lr/SLAT7829).
@@ -134,34 +131,34 @@ library(dplyr)
 library(flextable)
 weeks <- paste0("Week ", 1:13)
 content <- c(
-  "Introduction to the course",
-  "What is Text and Corpus Analysis?",
-  "Basic concepts",
+  "Preface | Introduction to Text and Corpus Analysis",
+  "Introduction to Text and Corpus Analysis",
   "Introduction to AntConc",
   "Using AntConc for Text and Corpus Analysis",
-  "Getting started with R and Rstudio",
-  "Working with table and texts",
-  "Introduction to Inferential Statistics",
-  "Regression Analysis 1: Model Fitting",
-  "Regression Analysis 2: Testing assumption",
-  "Regression Analysis 3: Types of Regressions",
-  "Regression Analysis 4: From fixed to mixed",
-  "Trees and round-up"
+  "Getting started with R and RStudio",
+  "String Processing in R and Rstudio",
+  "Visualizing textual data",
+  "Frequency lists and collocations",
+  "Collocations and basic statz for text analysis",
+  "Network Analysis",
+  "Pos-tagging and parsing",
+  "Sentiment Analysis",
+  "Topic Models and round-up"
 )
 scriptchapter <- c(
-  "Preface and Introduction",
-  "Basic Concepts in Quantitative Research",
-  "Basic Concepts in Quantitative Research",
+  "Introduction to the course | Introduction to Text and Corpus Analysis",
+  "Introduction to Text and Corpus Analysis",
+  "Introduction to AntConc",
+  "Using AntConc for Text and Corpus Analysis",
   "Getting started with R and RStudio",
-  "Introduction to R and RStudio",
-  "Descriptive Statistics",
-  "Introduction to Data Visualization with R",
-  "Descriptive Statistics",
-  "Simple and Multiple Regression",
-  "Simple and Multiple Regression",
-  "Logistic Regression",
-  "Mixed-Effects Regression",
-  "Tree-based Models"
+  "String Processing in R and Rstudio",
+  "Visualizing textual data",
+  "Frequency lists and collocations",
+  "Collocations and basic statz for text analysis",
+  "Network Analysis",
+  "Pos-tagging and parsing",
+  "Sentiment Analysis",
+  "Topic Models and round-up"
 )
 data.frame(weeks, content, scriptchapter) %>%
   as.data.frame() %>%
