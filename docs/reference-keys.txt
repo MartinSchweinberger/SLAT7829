@@ -123,3 +123,8 @@ term-frequencyinverse-document-frequency-tf-idf
 network-analysis-1
 sentiment-analysis-1
 topic-modeling-1
+preface
+basic-concepts-in-corpus-linguistics-and-text-analysis
+why-use-corpus-linguistics-cl-or-text-analysis-ta
+differences-and-commonalities-of-corpus-linguistics-and-text-analysis
+what-are-corpus-linguistics-and-text-analysis

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>SLAT7829 Text Analysis and Corpus Linguistics</title>
-  <meta name="description" content="SLAT7829 Text Analysis and Corpus Linguistics" />
+  <title>Week 3 Basic Concepts in Corpus Linguistics and Text Analysis | SLAT7829 Text Analysis and Corpus Linguistics</title>
+  <meta name="description" content="Week 3 Basic Concepts in Corpus Linguistics and Text Analysis | SLAT7829 Text Analysis and Corpus Linguistics" />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="SLAT7829 Text Analysis and Corpus Linguistics" />
+  <meta property="og:title" content="Week 3 Basic Concepts in Corpus Linguistics and Text Analysis | SLAT7829 Text Analysis and Corpus Linguistics" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="SLAT7829 Text Analysis and Corpus Linguistics" />
+  <meta name="twitter:title" content="Week 3 Basic Concepts in Corpus Linguistics and Text Analysis | SLAT7829 Text Analysis and Corpus Linguistics" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="what-are-corpus-linguistics-and-text-analysis.html"/>
+<link rel="prev" href="what-are-corpus-linguistics-and-text-analysis.html"/>
+<link rel="next" href="introduction-to-antconc.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -52,8 +52,6 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/tabwid-1.1.0/tabwid.css" rel="stylesheet" />
-<link href="libs/tabwid-1.1.0/scrool.css" rel="stylesheet" />
 
 
 
@@ -135,10 +133,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="" data-path="basic-concepts-in-corpus-linguistics-and-text-analysis.html"><a href="basic-concepts-in-corpus-linguistics-and-text-analysis.html#glossary-of-important-concepts"><i class="fa fa-check"></i>Glossary of Important Concepts</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-antconc.html"><a href="introduction-to-antconc.html"><i class="fa fa-check"></i><b>4</b> Introduction to AntConc</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-antconc.html"><a href="introduction-to-antconc.html#what-is-antconc"><i class="fa fa-check"></i>What is AntConc?</a></li>
-</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-antconc.html"><a href="introduction-to-antconc.html"><i class="fa fa-check"></i><b>4</b> Introduction to AntConc</a></li>
 <li class="chapter" data-level="5" data-path="introduction-to-antconc-1.html"><a href="introduction-to-antconc-1.html"><i class="fa fa-check"></i><b>5</b> Introduction to AntConc</a></li>
 <li class="chapter" data-level="6" data-path="getting-started-with-r-and-rstudio.html"><a href="getting-started-with-r-and-rstudio.html"><i class="fa fa-check"></i><b>6</b> Getting Started with R and RStudio</a>
 <ul>
@@ -285,176 +280,87 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">SLAT7829 Text Analysis and Corpus Linguistics</h1>
-<p class="author"><em>Martin Schweinberger</em></p>
-<p class="date"><em>2023-02-17</em></p>
-</div>
-<div id="preface" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Week 1</span> Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="basic-course-information" class="section level2 unnumbered hasAnchor">
-<h2>Basic Course Information<a href="index.html#basic-course-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="course-description" class="section level3 unnumbered hasAnchor">
-<h3>Course Description<a href="index.html#course-description" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The analysis of texts is undoubtedly a core aspect of many academic fields and important applications in education as well as the private sector. This course introduces students to the study of texts using computers, commonly called text analysis or corpus linguistics. Over the past decades, corpus linguistics has emerged both as a field in its own right but also as an important methodology across the language sciences including studies on language acquisition and learning, language variation and change as well as language use. As such, text analysis and corpus linguistics have helped to place linguistic theorizing on a sounder empirical footing by allowing researchers to explore massive amounts of textual data, be it learner essays, transcriptions of dinner table conversation, or historical documents. This course covers the fundamental concepts, origins, and methods of corpus linguistics and text analysis with a focus on a hands-on approach and using specific examples of how corpora can be used in applied linguistic research.</p>
-</div>
-<div id="course-introduction" class="section level3 unnumbered hasAnchor">
-<h3>Course Introduction<a href="index.html#course-introduction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This is a postgraduate-level course on compiling corpora (collections of language samples), working with and analyzing texts using corpus linguistic methods, with a particular focus on the areas of language use, learning, and teaching. The course covers a wide variety of issues and topics related to corpus linguistics and text analysis such as the fundamental concepts, origins, and methods of corpus linguistics and text analysis, the focus is placed on a hands-on approach by exploring collections of texts, applying computational methods, and using specific examples of how corpora can be used in applied linguistic research. In so doing, it will motivate students to apply the skills and methods to a diverse set of textual data sources with a focus on learner data.</p>
-</div>
-<div id="course-staff" class="section level3 unnumbered hasAnchor">
-<h3>Course Staff<a href="index.html#course-staff" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><strong>Course Coordinator</strong></p>
-<p>Dr Martin Schweinberger</p>
-<p>Phone: 3365 6374</p>
-<p>Email: <a href="mailto:m.schweinberger@uq.edu.au" class="email">m.schweinberger@uq.edu.au</a></p>
-<p>Office: St Lucia campus, Gordon Greenwood Building, Room 32-514</p>
-<p><strong>Lecturers</strong></p>
-<p>Martin Schweinberger (m.schweinberger@uq.edu.au)</p>
-<p>Rui Yin (ruihua.yin@uq.edu.au)</p>
-</div>
-<div id="timetable" class="section level3 unnumbered hasAnchor">
-<h3>Timetable<a href="index.html#timetable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Timetables are available on the UQ Public Timetable.</p>
-<p>Additional Timetable Information</p>
-<p>Students will be advised of any changes in advance. Dates and times for make-up classes are made available to students in advance via Blackboard.</p>
-</div>
-</div>
-<div id="aims-objectives-graduate-attributes" class="section level2 unnumbered hasAnchor">
-<h2>Aims, Objectives &amp; Graduate Attributes<a href="index.html#aims-objectives-graduate-attributes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="course-aims" class="section level3 unnumbered hasAnchor">
-<h3>Course Aims<a href="index.html#course-aims" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The course aims to introduce corpus linguistics and text analysis with a particular focus on with a particular focus on the areas of language use, learning, and teaching. It will present the fundamental skills needed to plan and carry out analyses of language based on text samples (corpora). Students will learn to compile, work with, use, and explore collections of texts as well as how to apply computational methods in applied linguistic research. In so doing, it will motivate students to apply the skills and methods to a diverse set of textual data sources with a focus on learner data. Course assessments will provide the opportunity to apply these skills in relevant research tasks.</p>
-</div>
-<div id="learning-objectives" class="section level3 unnumbered hasAnchor">
-<h3>Learning Objectives<a href="index.html#learning-objectives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>After successfully completing this course you should be able to:</p>
+<div id="basic-concepts-in-corpus-linguistics-and-text-analysis" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Week 3</span> Basic Concepts in Corpus Linguistics and Text Analysis<a href="basic-concepts-in-corpus-linguistics-and-text-analysis.html#basic-concepts-in-corpus-linguistics-and-text-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This session introduces basic concepts in corpus linguistics and text analysis.</p>
+<div id="glossary-of-important-concepts" class="section level2 unnumbered hasAnchor">
+<h2>Glossary of Important Concepts<a href="basic-concepts-in-corpus-linguistics-and-text-analysis.html#glossary-of-important-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Below, you will find explanations of concepts and methods that are important in Text Analysis and also links to relevant resources (including LADAL tutorials).</p>
+<p><strong>Word</strong></p>
+<p>What a word is is actually very tricky. For instance, How many words are there in this sentence?</p>
+<blockquote>
+<p>The cat sat on the mat
+One answer is that there are six words; that is, there are six <em>groups of characters</em> which are separated according to typographical convention. But there is another answer: There are five words, that is five <em>distinct sequences</em> of characters and one of those sequences (the) occurs twice. The terms commonly used to make this distinction are <strong>type</strong> and <strong>token</strong>. Tokens are instances of types, therefore if we count tokens, we count without considering repetition, while if we count types, we do consider repetition. In our example, there are five types (the, cat, sat, on, mat) but six tokens, because there are two tokens of one of the types (the).</p>
+</blockquote>
+<p>There is a further distinction we may need to make which we can see if we consider another question: are <em>cat</em> and <em>cats</em> the same word? They are distinct types, and therefore must also be distinct as tokens. But we have an intuition that at some level they are related, that there is some more abstract item which underlies both of them. This concept is usually referred to as a <strong>lemma</strong>.</p>
+<p><img src="https://slcladal.github.io/images/AntConcConcordance.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Concordancing</strong></p>
+<p>In Text Analysis, concordancing refers to the extraction of words from a given text or texts <span class="citation">(<a href="#ref-lindquist2009corpus" role="doc-biblioref">Lindquist 2009</a>)</span>. Commonly, concordances are displayed in the form of key-word in contexts (KWIC) where the search term is shown with some preceding and following context. Thus, such displays are referred to as key word in context concordances. A more elaborate tutorial on how to perform concordancing with R is available <a href="https://slcladal.github.io/kwics.html">here</a>. If you do not want to use coding to extract concordances, a highly recommendable tool for extracting concordances (and many other TA tasks) is <a href="https://www.laurenceanthony.net/software/antconc/">AntConc</a>.</p>
+<p>Concordancing is helpful for seeing how the term is used in the data, for inspecting how often a given word occurs in a text or a collection of texts, for extracting examples, and it also represents a basic procedure and often the first step in more sophisticated analyses of language data.</p>
+<p><strong>Corpus (pl. Corpora)</strong></p>
+<p>A corpus is a machine readable and electronically stored collection of natural language texts representing writing or speech chosen to be characteristic of a variety or the state of a language <span class="citation">(see <a href="#ref-sinclair1991corpus" role="doc-biblioref"><strong>sinclair1991corpus?</strong></a>)</span>. Corpora are great for extracting examples of natural examples and testing research hypotheses as it is easy to obtain information on frequencies, grammatical patterns, or collocations and they are commonly publicly available so the research results can be contrasted, compared and repeated.</p>
+<p>There are four main types of corpora:</p>
 <ol style="list-style-type: decimal">
-<li>Describe and explain how language is used in different contexts<br />
-</li>
-<li>Understanding of concepts and methods in text analysis and corpus linguistics<br />
-</li>
-<li>Effectively apply the concepts and theories studied in the course to the analysis of language data (texts)<br />
-</li>
-<li>Practically apply text analysis and corpus linguistics methods<br />
-</li>
-<li>Critically evaluate analyses of language data<br />
-</li>
-<li>Identify differences between learners and native speakers of English</li>
+<li><p><strong>Monitor corpora</strong>: large collections of texts from different genres/modes that aim at representing a language or language variety, e.g., <a href="https://www.ice-corpora.uzh.ch/en.html"><em>International Corpus of English</em> (ICE)</a>, <a href="https://www.english-corpora.org/coca/"><em>Corpus of Contemporary Corpus of American English</em> (COCA)</a>, that are, e.g., used to analyse the use of certain linguistic phenomena or to investigate collocations of certain words/topics</p></li>
+<li><p><strong>Learner corpora</strong>: Contain data from language learners - these can be either L1 learners, e.g., <a href="https://childes.talkbank.org/"><em>Child Language Data Exchange System</em> (CHILDES)</a>, and/or L2 learners, e.g., <a href="https://uclouvain.be/en/research-institutes/ilc/cecl/icle.html">the <em>International Corpus of Learner English</em> (ICLE)</a>) - to study, e.g., how L1 and/or L2 speakers learn/acquire (aspects of) a language and to see how learners differ from native speakers.</p></li>
+<li><p><strong>Historical or diachronic corpora</strong>: Contain data from different points in time that allow to analyse the development of a language or language variety (e.g., <a href="https://www.ling.upenn.edu/hist-corpora/"><em>Penn Parsed Corpora of Historical English</em></a>,<a href="http://icame.uib.no/hc/"><em>The Helsinki Corpus of English Texts</em></a>) to study, e.g., how language changes or how genres develop over time.</p></li>
+<li><p><strong>Specialized corpora</strong>: Contain data representing a specific genre/text type (e.g., <a href="https://www.coventry.ac.uk/research/research-directories/current-projects/2015/british-academic-written-english-corpus-bawe/"><em>British Academic Written English Corpus</em> (BAWE)</a>) to study, e.g., (linguistic) features of a genre (e.g. academic writing) or language in class rooms.</p></li>
 </ol>
-</div>
-</div>
-<div id="learning-resources" class="section level2 unnumbered hasAnchor">
-<h2>Learning Resources<a href="index.html#learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="required-resources" class="section level3 unnumbered hasAnchor">
-<h3>Required Resources<a href="index.html#required-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Stefanowitsch, Anatol. 2020. <em>Corpus linguistics. A guide to the methodology</em>. Language Science Press. DOI: <a href="https://doi.org/10.5281/zenodo.3735822" class="uri">https://doi.org/10.5281/zenodo.3735822</a></p>
-<p>O’Keeffe, Anne &amp; Michael J. McCarthy (eds.). 2022. <em>The Routledge Handbook of Corpus Linguistics</em>. Routledge. DOI: <a href="https://doi-org.ezproxy.library.uq.edu.au/10.4324/9780367076399" class="uri">https://doi-org.ezproxy.library.uq.edu.au/10.4324/9780367076399</a>.</p>
-<p>Lecture recordings and tutorial recordings are made available on Blackboard.</p>
-<p>The course book for this course is <em>O’Keeffe, A., &amp; McCarthy, M. (Eds.). (2022). The Routledge handbook of corpus linguistics. 2nd edition. London: Routledge.</em></p>
-<p><span class="citation">O’Keeffe and McCarthy (<a href="#ref-r2022handboocl" role="doc-biblioref">2022</a>)</span></p>
-</div>
-<div id="recommended-resources" class="section level3 unnumbered hasAnchor">
-<h3>Recommended Resources<a href="index.html#recommended-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Pinto, P. T., Crosthwaite, P., de Carvalho, C. T., Spinelli, F., Serpa, T., Garcia, W., &amp; Ottaiano, A. O. (Eds.). (2023). <em>Using Language Data to Learn About Language: A Teachers’ Guide to Classroom Corpus Use</em>. University of Queensland.</p>
-</div>
-<div id="university-learning-resources" class="section level3 unnumbered hasAnchor">
-<h3>University Learning Resources<a href="index.html#university-learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Access to required and recommended resources, plus past central exam papers, is available at the UQ Library website (<a href="http://www.library.uq.edu.au/lr/SLAT7829" class="uri">http://www.library.uq.edu.au/lr/SLAT7829</a>).</p>
-<p>The University offers a range of resources and services to support student learning. Details are available on the myUQ website (<a href="https://my.uq.edu.au/" class="uri">https://my.uq.edu.au/</a>)</p>
-</div>
-<div id="school-of-languages-and-cultures-learning-resources" class="section level3 unnumbered hasAnchor">
-<h3>School of Languages and Cultures Learning Resources<a href="index.html#school-of-languages-and-cultures-learning-resources" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://www.languages-cultures.uq.edu.au/student-support">Student Support at the SLC</a></p>
-</div>
-<div id="other-learning-resources-information" class="section level3 unnumbered hasAnchor">
-<h3>Other Learning Resources &amp; Information<a href="index.html#other-learning-resources-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>See Blackboard for Learning Resources.</p>
-<p><em>Language Technology and Data Analysis Laboratory</em> (LADAL) available via <a href="https://ladal.edu.au/" class="uri">https://ladal.edu.au/</a></p>
-</div>
-</div>
-<div id="teaching-learning-activities" class="section level2 unnumbered hasAnchor">
-<h2>Teaching &amp; Learning Activities<a href="index.html#teaching-learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="learning-activities" class="section level3 unnumbered hasAnchor">
-<h3>Learning Activities<a href="index.html#learning-activities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Recording of Lectures: Please be aware that teaching at UQ may be recorded for the benefit of student learning. If you would prefer not to be captured either by voice or image, please advise your course coordinator before class so accommodations can be made. For further information see PPL 3.20.06 Recording of Teaching at UQ.</p>
-</div>
-<div id="course-plan" class="section level3 unnumbered hasAnchor">
-<h3>Course plan<a href="index.html#course-plan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<template id="0363ef00-2990-4a07-a143-ef517848d451"><style>
-.tabwid table{
-  border-spacing:0px !important;
-  border-collapse:collapse;
-  line-height:1;
-  margin-left:auto;
-  margin-right:auto;
-  border-width: 0;
-  display: table;
-  border-color: transparent;
-  caption-side: top;
-}
-.tabwid-caption-bottom table{
-  caption-side: bottom;
-}
-.tabwid_left table{
-  margin-left:0;
-}
-.tabwid_right table{
-  margin-right:0;
-}
-.tabwid td {
-    padding: 0;
-}
-.tabwid a {
-  text-decoration: none;
-}
-.tabwid thead {
-    background-color: transparent;
-}
-.tabwid tfoot {
-    background-color: transparent;
-}
-.tabwid table tr {
-background-color: transparent;
-}
-.katex-display {
-    margin: 0 0 !important;
-}
-</style><div class="tabwid"><style>.cl-08c6129c{table-layout:auto;width:95%;}.cl-08b7cd7c{font-family:'Arial';font-size:12pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-08b7cd90{font-family:'Arial';font-size:12pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-08bd2ccc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-08bd50e4{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50ee{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50ef{background-color:rgba(207, 207, 207, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50f8{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50f9{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50fa{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd50fb{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd5102{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd5103{background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd510c{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd510d{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08bd510e{background-color:rgba(239, 239, 239, 1.00);vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-08a7db74{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}</style><table class='cl-08c6129c'>
-
-<caption>
-<span id="tab:tt">Table 1.1: </span><span class="cl-08a7db74">Overview of the course activities by week.</span>
-</caption>
-
-<thead><tr style="overflow-wrap:break-word;"><td class="cl-08bd50e4"><p class="cl-08bd2ccc"><span class="cl-08b7cd7c">Weeks</span></p></td><td class="cl-08bd50ee"><p class="cl-08bd2ccc"><span class="cl-08b7cd7c">Activities</span></p></td><td class="cl-08bd50ef"><p class="cl-08bd2ccc"><span class="cl-08b7cd7c">Lectures</span></p></td></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 1</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What is a corpus? What is corpus linguistics?</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Introduction to the Course</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 2</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">How to design and build a corpus?</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What are Corpus Linguistics and Text Analysis?</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 3</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can we do with corpora and corpus tools?</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Basic Concepts in Corpus Linguistics and Text Analysis</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 4</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Analysing corpus and text data</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Using Corpus Software for Text Analysis</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 5</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can corpora tell us about grammar?</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Getting started with R and RStudio</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 6</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can corpora tell us about lexis?</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">String Processing and regular expressions</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 7</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can corpora tell us about register?</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Concordancing and words lists</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 8</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can corpora tell us about discourse?</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Frequency information and collocations</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 9</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">What can corpora tell us about language learning?</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Annotation: tagging and, parsing</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 10</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">How can corpora be used in language teaching?</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Comparing texts</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50f8"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 11</span></p></td><td class="cl-08bd50f9"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Using corpora for research</span></p></td><td class="cl-08bd50fa"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Network analysis</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd50fb"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 12</span></p></td><td class="cl-08bd5102"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Applied corpus linguistics</span></p></td><td class="cl-08bd5103"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Sentiment analysis</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-08bd510c"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Week 13</span></p></td><td class="cl-08bd510d"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Summary, review, and outlook</span></p></td><td class="cl-08bd510e"><p class="cl-08bd2ccc"><span class="cl-08b7cd90">Topic models and round-up</span></p></td></tr></tbody></table></div></template>
-<div class="flextable-shadow-host" id="0fcb86d9-168b-459e-84ed-3279a09f8df6"></div>
-<script>
-var dest = document.getElementById("0fcb86d9-168b-459e-84ed-3279a09f8df6");
-var template = document.getElementById("0363ef00-2990-4a07-a143-ef517848d451");
-var caption = template.content.querySelector("caption");
-var fantome = dest.attachShadow({mode: 'open'});
-var templateContent = template.content;
-fantome.appendChild(templateContent);
-</script>
-
-</div>
-</div>
-<div id="other-teaching-and-learning-activities-information" class="section level2 unnumbered hasAnchor">
-<h2>Other Teaching and Learning Activities Information<a href="index.html#other-teaching-and-learning-activities-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Weekly learning activities consist of a one-hour face-to-face or online lecture and a two-hour tutorial (conducted either in class or via zoom). Weekly lecture content is either delivered face-to-face or consists of pre-recorded lectures that are uploaded to Blackboard one week before the scheduled week. Weekly tutorials are conducted face-to-face or online via Zoom following your scheduled timetable allocations. Throughout the semester you will be expected to contribute substantially and consistently to our tutorial activities and discussions of research approaches and methodologies drawing on your own ideas and experiences. Please make sure that you keep up with the course content by reviewing the online materials made available on Blackboard (e.g., lecture podcasts, lecture and tutorial slides, readings) and completing the assessments.</p>
-<p>Allocations usually take a few weeks to finalise so please be patient.</p>
-<p>Public Holidays 2023: If your tutorial falls on one of these, a make-up class will be held in the same or the following week - the dates and times for make up classes will be announced via Blackboard. Please wait for information about this.
-Friday, 7th April (Good Friday)
-Monday, 10th April ( Easter Monday)
-Tuesday, 25th April (ANZAC Day)
-​Monday, 1st May (Labour Day)</p>
+<p><img src="https://slcladal.github.io/images/collocates.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Collocations</strong></p>
+<p>Collocations are words that are attracted to each other (and that co-occur or co-locate together), e.g., <em>Merry Christmas</em>, <em>Good Morning</em>, <em>No worries</em>, or <em>Fuck off</em>. Collocations are important because any word in any given language has collocations, i.e., others words that are attracted to that word or words that that word is attracted to
+allow us to anticipate what word comes next and collocations are context/text type specific. It is important to note that collocations to not have to appear/occur right next to each other but that other words can be in between. There are various different statistical measures are used to define the strength of the collocations, like the Mutual Information (MI) score and log-likelihood (<a href="http://www.collocations.de/AM/index.html">see here for an over view of different association strengths measures</a>).</p>
+<p><strong>Document Classification</strong></p>
+<p>Document or Text Classification (also referred to as text categorization) generally refers to process of grouping texts or documents based on similarity. This similarity can be based on word frequencies or other linguistics features but also on text external features such as genre labels or polarity scores.</p>
+<p><strong>Document-Term Matrix</strong></p>
+<p>Document-Term Matrices (DTM) and Term- Document Matrices (TDM) contain the frequencies of words per document. DTM and TDM differ in whether the words or the documents are represented as rows. Thus, the words (terms) are listed as row names and the documents represent the column names while the matrix itself contains the frequencies of the words in the documents.</p>
+<p><img src="https://slcladal.github.io/images/speciescloud.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Frequency Analysis</strong></p>
+<p>Frequency Analysis is a suit of methods which extract and compare frequencies of different words (tokens and/or types), collocations, phrases, sentences, etc. These frequencies are the often tabulated to show lists of words, phrases, etc. descending by frequency, visualized to show distributions, and/or compared and analyzed statistically to find differences between texts or collections fo texts.</p>
+<p><strong>Keyword Analysis</strong></p>
+<p>Keyword Analysis refers to a suit of methods that allow to detect words that are characteristic of on text or collection of texts compared to another text/collection of texts. There are various keyness measures such as Log-Likelihood or the term frequency–inverse document frequency (tf-idf).</p>
+<p><strong>Lemma (Lemmatization)</strong></p>
+<p>Lemma refers to the base form of a word (example: <em>walk</em>, <em>walked</em>, and <em>walking</em> are word forms of the lemma <em>WALK</em>). Lemmatization refers to a annotation process in which word forms are associated with their base form (lemma). Lemmatization is a very common and sometimes useful processing step for further analyses. In contrast to stemming - which is a related process - lemmatization also takes into account semantic differences (differences in the word meaning), while stemming only takes the orthography of words into consideration.</p>
+<p><strong>N-Gram</strong></p>
+<p>N-grams are combinations/sequences of words, e.g. the sentence <em>I really like pizza!</em> has the bi-grams (2-grams): <em>I really</em>, <em>really like</em>, and <em>like pizza</em> and the tri-grams (3-grams) <em>I really like</em> and <em>really like pizza</em>. N-grams play an important part in natural language processing (e.g. part-of-speech tagging), language learning, psycholinguistics models of language production, and genre analysis.</p>
+<p><strong>Natural Language Processing</strong></p>
+<p>Natural Language Processing (NLP) is an interdisciplinary field in computer science that has specialized on processing natural language data using computational and mathematical methods. Many methods used in Text Analysis have been developed in NLP.</p>
+<p><img src="https://slcladal.github.io/images/romeonet.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Network Analysis</strong></p>
+<p>Network Analysis is the most common way to visualize relationships between entities. Networks, also called graphs, consist of nodes (typically represented as dots) and edges (typically represented as lines) and they can be directed or undirected networks.</p>
+<p>In directed networks, the direction of edges is captured. For instance, the exports of countries. In such cases the lines are directed and typically have arrows to indicate direction. The thickness of lines can also be utilized to encode information such as frequency of contact.</p>
+<p><strong>Part-of-Speech Tagging</strong></p>
+<p>Part-of-Speech (PoS) Tagging identifies the word classes of words (e.g., noun, adjective, verb, etc.) in a text and adds part-of-speech tags to each word. There are various part-of-speech tagsets, e.g. the Penn Treebank is the most frequently used tagset used for English. A more detailed tutorial on how to perform part-of-speech tagging in R can be found <a href="https://slcladal.github.io/tagging.html">here</a>.</p>
+<p><strong>Project Gutenberg</strong></p>
+<p>The Project Gutenberg is a excellent resource for accessing digitized literary texts. The Project Gutenberg library contains over 60,000 ebooks that are out of copyright in the US. A tutorial on how to download texts form the Project Gutenberg library using the <code>GutenbergR</code> package can be found <a href="https://slcladal.github.io/gutenberg.html">here</a>.</p>
+<p><strong>Regular Expression</strong></p>
+<p>Regular Expressions - often simply referred to as regex - are symbols or sequence of symbols utilized to search for patterns in textual data. Regular Expressions are very useful and widely used in Text Analysis and often different programming languages will have very similar but slightly different Regular Expressions. A tutorial on how to use regular expression in R can be found <a href="https://slcladal.github.io/regex.html">here</a> and here is a link to a <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/regex.pdf">regex in R cheat sheet</a>.</p>
+<p><strong>Semantic Analysis</strong></p>
+<p>Semantic Analysis refers to a suit of methods that allow to analyze the semantic (semantics) fo texts. Such analyses often rely on semantic tagsets that are based on word meaning or meaning families/categories. Two examples of such semantic tagsets are the <a href="https://ucrel.lancs.ac.uk/claws7tags.html">URCEL tagset</a> and the <a href="http://eprints.gla.ac.uk/115024/"><em>Historical Thesaurus Semantic Tagger</em></a> <span class="citation">(<a href="#ref-alexander2015tagger" role="doc-biblioref"><strong>alexander2015tagger?</strong></a>)</span> developed at the University of Glasgow.</p>
+<p><img src="https://slcladal.github.io/images/senti.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Sentiment Analysis</strong></p>
+<p>Sentiment Analysis is a computational approach to determine if words or texts are associated with (positive or negative) polarity or emotions.Commonly, sentiments analyses are based on sentiment dictionaries (words are annotated based on whether they occur in a list of words associated with, e.g., positive polarity or emotion, e.g., <em>fear</em>, <em>anger</em>, or <em>joy.</em> A tutorial on how to perform sentiment analysis in R can be found <a href="https://slcladal.github.io/sentiment.html">here</a>.</p>
+<p><strong>String</strong></p>
+<p>In computational approaches, a string is a specific type of data that represents text and is often encoded in specific format, e.g., Latin1 or UTF8. Strings may also be present in other data types such as lists or data frames. A tutorial on how to work with strings in R can be found <a href="https://slcladal.github.io/string.html">here</a>.</p>
+<p><strong>Term Frequency–Inverse Document Frequency (tf-idf)</strong></p>
+<p>Term Frequency–Inverse Document Frequency is a statistical measure of keyness which reflects how characteristic a word is of a specific text. Term Frequency–Inverse Document Frequency is based on the frequencies of words in a text compared to the frequency of documents in which it occurs</p>
+<p><img src="https://slcladal.github.io/images/topic.png" width="40%" style="float:right; padding:10px" /></p>
+<p><strong>Topic Modeling</strong></p>
+<p>Topic modelling is a machine learning method seeks to answer the question: given a collection of documents, can we identify what they are <em>about</em>?</p>
+<p>Topic model algorithms look for patterns of co-occurrences of words in documents. We assume that, if a document is about a certain topic, one would expect words that are related to that topic to appear in the document more often than in documents that deal with other topics. Topic model commonly use Latent Dirichlet Allocation (LDA) to find <em>topics</em> in textual data.</p>
+<p>There are two basic types of Topic models</p>
+<ul>
+<li><p>supervised or seeded topics models where the researchers provides seed terms around which the LDS looks for topics (collections of correlating terms)</p></li>
+<li><p>unsupervised or unseeded topic models which try to find a predefined number of topics (collections of correlating terms)</p></li>
+</ul>
+<p>A tutorial on how to work with strings in R can be found <a href="https://slcladal.github.io/topicmodels.html">here</a>.</p>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-r2022handboocl" class="csl-entry">
-O’Keeffe, Anne, and Michael McCarthy. 2022. <em>The Routledge Handbook of Corpus Linguistics</em>. 2nd ed. London: Routledge.
+<div id="ref-lindquist2009corpus" class="csl-entry">
+Lindquist, Hans. 2009. <em>Corpus Linguistics and the Description of English</em>. Edinburgh: Edinburgh University Press.
 </div>
 </div>
             </section>
@@ -462,8 +368,8 @@ O’Keeffe, Anne, and Michael McCarthy. 2022. <em>The Routledge Handbook of Corp
           </div>
         </div>
       </div>
-
-<a href="what-are-corpus-linguistics-and-text-analysis.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="what-are-corpus-linguistics-and-text-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-antconc.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -494,7 +400,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/index.Rmd",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/edit/master/02-basics.Rmd",
 "text": "Edit"
 },
 "history": {
@@ -502,7 +408,7 @@ gitbook.start({
 "text": null
 },
 "view": {
-"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/index.Rmd",
+"link": "https://github.com/MartinSchweinberger/SLAT7829/blob/master/02-basics.Rmd",
 "text": null
 },
 "download": null,

@@ -1,5 +1,5 @@
 --- 
-title: "SLAT7829 Text and Corpus Analysis"
+title: "SLAT7829 Text Analysis and Corpus Linguistics"
 author: "Martin Schweinberger"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -9,36 +9,23 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Preface {-}
+# Preface
 
 ## Basic Course Information {-}
 
 ### Course Description {-}
 
-This course introduces basic statistical techniques used in quantitative research in applied linguistics. The rationale and assumptions for various techniques will be presented and practice given in applying them to data using statistical software packages.
-
-Assumed Background: No background in statistics or mathematics is assumed.
+The analysis of texts is undoubtedly a core aspect of many academic fields and important applications in education as well as the private sector. This course introduces students to the study of texts using computers, commonly called text analysis or corpus linguistics. Over the past decades, corpus linguistics has emerged both as a field in its own right but also as an important methodology across the language sciences including studies on language acquisition and learning, language variation and change as well as language use. As such, text analysis and corpus linguistics have helped to place linguistic theorizing on a sounder empirical footing by allowing researchers to explore massive amounts of textual data, be it learner essays, transcriptions of dinner table conversation, or historical documents. This course covers the fundamental concepts, origins, and methods of corpus linguistics and text analysis with a focus on a hands-on approach and using specific examples of how corpora can be used in applied linguistic research.
 
 ### Course Introduction {-}
 
-This course will examine and apply basic statistical tools used in quantitative research in second language acquisition, applied linguistics and linguistics. The focus will be on quantitative methodology used in coursework dissertation and MPhil/PhD research in applied linguistics and related fields, but the course will be of interest to anyone who wants a better understanding of quantitative methods in language research.
- 
-The course has three aims. It will provide
- 
-1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research  
-2. exposure to commonly used statistical techniques   
-3. in-depth experience in using R (RStudio)  
- 
- 
-Statistical methodology in language research is very broad and has different levels of sophistication. The course will endeavor to introduce the conceptual, analytical and technical tools you need to understand quantitative findings in the research literature and possibly use these techniques in your own research. However, the use of a given statistical technique is determined by the specific research question and study goals. Given the breadth and study-specific nature of quantitative methodology, an introductory course like this can only provide the basic conceptual framework for carrying out research and an introduction to the techniques used.  As a result, there will be a strong emphasis on discovery-based learning. You will be expected to locate, learn and use the resources necessary to carry out and report specific statistical analyses. You will also will present your findings to the other students, both individually and in groups. In other words, you will be expected to be both a learner and a teacher.
-
-Course Changes in Response to Previous Student Feedback
-
-Previous student feedback has been incorporated in this profile.
+This is a postgraduate-level course on compiling corpora (collections of language samples), working with and analyzing texts using corpus linguistic methods, with a particular focus on the areas of language use, learning, and teaching. The course covers a wide variety of issues and topics related to corpus linguistics and text analysis such as the fundamental concepts, origins, and methods of corpus linguistics and text analysis, the focus is placed on a hands-on approach by exploring collections of texts, applying computational methods, and using specific examples of how corpora can be used in applied linguistic research.  In so doing, it will motivate students to apply the skills and methods to a diverse set of textual data sources with a focus on learner data.
 
 ### Course Staff {-}
 
-Course Coordinator: Dr Martin Schweinberger
+**Course Coordinator**
+
+Dr Martin Schweinberger
 
 Phone: 3365 6374 
 
@@ -46,6 +33,11 @@ Email: m.schweinberger@uq.edu.au
 
 Office: St Lucia campus, Gordon Greenwood Building, Room 32-514
 
+**Lecturers**
+
+Martin Schweinberger (m.schweinberger\@uq.edu.au)
+
+Rui Yin (ruihua.yin\@uq.edu.au)
 
 
 ### Timetable {-}
@@ -62,53 +54,45 @@ Students will be advised of any changes in advance. Dates and times for make-up 
 ### Course Aims {-}
 
  
-The course will introduce the conceptual, analytical and technical tools students need to understand quantitative findings in the language research literature and to use quantitative methods in their own research. It will do this by meeting three aims. The course will provide:
- 
-1. grounding in the basic logic and scope of quantitative reasoning (= statistics) in language research  
-2. exposure to commonly used statistical techniques   
-3. in-depth experience in using R (RStudio)  
+The course aims to introduce corpus linguistics and text analysis with a particular focus on with a particular focus on the areas of language use, learning, and teaching. It will present the fundamental skills needed to plan and carry out analyses of language based on text samples (corpora). Students will learn to compile, work with, use, and explore collections of texts as well as how to apply computational methods in applied linguistic research. In so doing, it will motivate students to apply the skills and methods to a diverse set of textual data sources with a focus on learner data. Course assessments will provide the opportunity to apply these skills in relevant research tasks.
  
 
 ### Learning Objectives {-}
 
 After successfully completing this course you should be able to:
 
-1. 	Understand and apply basic statistical tests in applied linguistics and second language acquisition.  
-2. 	Understand the role of quantitative evidence in describing and explaining language learning and use.  
-3. 	Read quantitative research in these areas in a more critical and productive manner.  
-4. 	Use statistical software to analyse and present data.  
-5. 	Write up results for a dissertation or publication.  
+1. 	Describe and explain how language is used in different contexts  
+2. 	Understanding of concepts and methods in text analysis and corpus linguistics  
+3. 	Effectively apply the concepts and theories studied in the course to the analysis of language data (texts)  
+4. 	Practically apply text analysis and corpus linguistics methods  
+5. 	Critically evaluate analyses of language data  
+6. 	Identify differences between learners and native speakers of English
 
 ## Learning Resources {-}
 
 
 ### Required Resources {-}
 
-The script for the course is made available on 
+Stefanowitsch, Anatol. 2020. *Corpus linguistics. A guide to the methodology*. Language Science Press. DOI: https://doi.org/10.5281/zenodo.3735822
 
-[https://MartinSchweinberger.github.io/SLAT7829](https://MartinSchweinberger.github.io/SLAT7829)
+O'Keeffe, Anne  & Michael J. McCarthy (eds.). 2022. *The Routledge Handbook of Corpus Linguistics*. Routledge. DOI: https://doi-org.ezproxy.library.uq.edu.au/10.4324/9780367076399.
 
 Lecture recordings and tutorial recordings are made available on Blackboard.
 
+The course book for this course is *O'Keeffe, A., & McCarthy, M. (Eds.). (2022). The Routledge handbook of corpus linguistics. 2nd edition. London: Routledge.*
+
+@r2022handboocl
+
 ### Recommended Resources {-}
 
-@schweinberger2022introta
-
-@schweinberger2022ta
+Pinto, P. T., Crosthwaite, P., de Carvalho, C. T., Spinelli, F., Serpa, T., Garcia, W., & Ottaiano, A. O. (Eds.). (2023). *Using Language Data to Learn About Language: A Teachers’ Guide to Classroom Corpus Use*. University of Queensland.
 
 
 ### University Learning Resources {-}
 
-It is strongly recommended to attend the following UQ Library Trainings:
-
-1. R with RStudio: Getting started  
-2. R reproducible reports with R Markdown and knitr    
-3. R data visualization with RStudio and ggplot2: introduction  
-
-
 Access to required and recommended resources, plus past central exam papers, is available at the UQ Library website (http://www.library.uq.edu.au/lr/SLAT7829).
 
-The University offers a range of resources and services to support student learning. Details are available on the myUQ website (https://my.uq.edu.au/).
+The University offers a range of resources and services to support student learning. Details are available on the myUQ website (https://my.uq.edu.au/)
 
 ### School of Languages and Cultures Learning Resources {-}
 
@@ -118,6 +102,8 @@ The University offers a range of resources and services to support student learn
 
 See Blackboard for Learning Resources. 
 
+*Language Technology and Data Analysis Laboratory* (LADAL) available via https://ladal.edu.au/
+
 ## Teaching & Learning Activities {-}
 
 ### Learning Activities {-}
@@ -126,41 +112,43 @@ Recording of Lectures: Please be aware that teaching at UQ may be recorded for t
 
 ### Course plan {-}
 
+
 ```{r tt, echo = F, eval = T, message=FALSE, warning=FALSE}
 library(dplyr)
 library(flextable)
-weeks <- paste0("Week ", 1:13)
-content <- c(
-  "Preface | Introduction to Text and Corpus Analysis",
-  "Introduction to Text and Corpus Analysis",
-  "Introduction to AntConc",
-  "Using AntConc for Text and Corpus Analysis",
-  "Getting started with R and RStudio",
-  "String Processing in R and Rstudio",
-  "Visualizing textual data",
-  "Frequency lists and collocations",
-  "Collocations and basic statz for text analysis",
-  "Network Analysis",
-  "Pos-tagging and parsing",
-  "Sentiment Analysis",
-  "Topic Models and round-up"
+Weeks <- paste0("Week ", 1:13)
+
+Activities <- c(
+  "What is a corpus? What is corpus linguistics?",
+  "How to design and build a corpus?",
+  "What can we do with corpora and corpus tools?",
+  "Analysing corpus and text data",
+  "What can corpora tell us about grammar?",
+  "What can corpora tell us about lexis?",
+  "What can corpora tell us about register?",
+  "What can corpora tell us about discourse?",
+  "What can corpora tell us about language learning?",
+  "How can corpora be used in language teaching?",
+  "Using corpora for research",
+  "Applied corpus linguistics",
+  "Summary, review, and outlook"
 )
-scriptchapter <- c(
-  "Introduction to the course | Introduction to Text and Corpus Analysis",
-  "Introduction to Text and Corpus Analysis",
-  "Introduction to AntConc",
-  "Using AntConc for Text and Corpus Analysis",
+Lectures <- c(
+  "Introduction to the Course",
+  "What are Corpus Linguistics and Text Analysis?",
+  "Basic Concepts in Corpus Linguistics and Text Analysis",
+  "Using Corpus Software for Text Analysis",
   "Getting started with R and RStudio",
-  "String Processing in R and Rstudio",
-  "Visualizing textual data",
-  "Frequency lists and collocations",
-  "Collocations and basic statz for text analysis",
-  "Network Analysis",
-  "Pos-tagging and parsing",
-  "Sentiment Analysis",
-  "Topic Models and round-up"
+  "String Processing and regular expressions",
+  "Concordancing and words lists",
+  "Frequency information and collocations",
+  "Annotation: tagging and, parsing",
+  "Comparing texts",
+  "Network analysis",
+  "Sentiment analysis",
+  "Topic models and round-up"
 )
-data.frame(weeks, content, scriptchapter) %>%
+data.frame(Weeks, Activities, Lectures) %>%
   as.data.frame() %>%
   flextable::flextable() %>%
   flextable::set_table_properties(width = .95, layout = "autofit") %>%
@@ -171,4 +159,16 @@ data.frame(weeks, content, scriptchapter) %>%
   flextable::set_caption(caption = "Overview of the course activities by week.")  %>%
   flextable::border_outer()
 ```
+
+## Other Teaching and Learning Activities Information  {-}
+
+Weekly learning activities consist of a one-hour face-to-face or online lecture and a two-hour tutorial (conducted either in class or via zoom).  Weekly lecture content is either delivered face-to-face or consists of pre-recorded lectures that are uploaded to Blackboard one week before the scheduled week.  Weekly tutorials are conducted face-to-face or online via Zoom following your scheduled timetable allocations. Throughout the semester you will be expected to contribute substantially and consistently to our tutorial activities and discussions of research approaches and methodologies drawing on your own ideas and experiences. Please make sure that you keep up with the course content by reviewing the online materials made available on Blackboard (e.g., lecture podcasts, lecture and tutorial slides, readings) and completing the assessments.
+
+Allocations usually take a few weeks to finalise so please be patient.
+
+Public Holidays 2023:  If your tutorial falls on one of these, a make-up class will be held in the same or the following week - the dates and times for make up classes will be announced via Blackboard. Please wait for information about this.
+Friday, 7th April (Good Friday)
+Monday, 10th April ( Easter Monday)
+Tuesday, 25th April (ANZAC Day)
+​Monday, 1st May (Labour Day)
 
