@@ -9,7 +9,7 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Preface
+# Preface {-}
 
 ## Basic Course Information {-}
 
@@ -134,19 +134,19 @@ Activities <- c(
   "Summary, review, and outlook"
 )
 Lectures <- c(
-  "Introduction to the Course",
-  "What are Corpus Linguistics and Text Analysis?",
+  "Introduction to the Course and to Corpus Linguistics and Text Analysis",
+  "Types of Corpus and bulding corpora",
   "Basic Concepts in Corpus Linguistics and Text Analysis",
   "Using Corpus Software for Text Analysis",
   "Getting started with R and RStudio",
   "String Processing and regular expressions",
   "Concordancing and words lists",
   "Frequency information and collocations",
+  "Analyzing collocations",
   "Annotation: tagging and, parsing",
-  "Comparing texts",
-  "Network analysis",
-  "Sentiment analysis",
-  "Topic models and round-up"
+  "Comparing texts I",
+  "Comparing texts II",
+  "Summary and round-up"
 )
 data.frame(Weeks, Activities, Lectures) %>%
   as.data.frame() %>%

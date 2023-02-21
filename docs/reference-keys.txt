@@ -128,3 +128,6 @@ basic-concepts-in-corpus-linguistics-and-text-analysis
 why-use-corpus-linguistics-cl-or-text-analysis-ta
 differences-and-commonalities-of-corpus-linguistics-and-text-analysis
 what-are-corpus-linguistics-and-text-analysis
+basic-concepts-in-corpus-linguistics-and-text-analysis-1
+how-to-design-and-build-a-corpus
+overview-of-corpus-software

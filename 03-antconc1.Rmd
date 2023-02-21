@@ -1,8 +1,8 @@
-# Introduction to AntConc
+# Overview of corpus software
 
-This session introduces AntConc and showcases its core functionalities and applications.
+This session provides an overview of the most common software applications and ready-made tools used in corpus linguistics..
 
-## What is AntConc? {-}
+## AntConc? {-}
 
 AntConc is a popular, free software program used for corpus linguistics analysis. It is designed to work with text corpora, which are large collections of written or spoken texts used for linguistic analysis.
 
